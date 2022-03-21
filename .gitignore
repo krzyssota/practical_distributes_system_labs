@@ -1,0 +1,6 @@
+.DS_Store
+login_vpn
+mim-gw.ovpn
+openvpn-status.log
+pass_vpn
+lab04/lab04_venv/*
