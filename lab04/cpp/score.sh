@@ -1,16 +1,21 @@
 #!/bin/bash
-g++ -x c++ -
 
-./a.out
+g++ -Wall -x c++ -
 
-find examples -name *.in |
-while read example_file
+EXAMPLES_PATH="examples/${TASK_ID}"
+
+find ${EXAMPLES_PATH} -name *.in -exec basename -s .in {} \: | \
+while read test
 do
-	example_number=$(basename -s.in ${example_file})
-	./a.out < ${example_file} > out
+	./a.out < ${EXAMPLES_PATH}/${test} > out
 	exit_code=$?
-	diff out "examples/${example_number}.out"
+	diff out "${EXAMPLES_PATH}/${test}.out" > /dev/null
 	diff_code=$?
 
-	echp "${exit_code}, ${diff_code}"
+	echo "${exit_code}, ${diff_code}"
 done
+
+# docker build -t cpp-builder -f Dockerfile.cpp
+#docker run -e TASK_ID=
+
+git rm --cached lab04/lab04_venv/
