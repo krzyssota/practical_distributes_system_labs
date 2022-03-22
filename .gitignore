@@ -4,3 +4,4 @@ mim-gw.ovpn
 openvpn-status.log
 pass_vpn
 lab04/lab04_venv/*
+lab04/__pycache__
