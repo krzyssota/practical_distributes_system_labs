@@ -21,14 +21,6 @@ def calc(cnt: int = None):
 @statsd.timer("app.root")
 def root(cnt: int = None):
     statsd.incr("app.root.called")
-    if even:
-        even = False
-        return {"message": "not serving even requests"}
-    else:
-        even = True
-        return {"message": "happily serving odd requests"}
-    
-
     if cnt:
         sleep_time = random.randint(0, cnt * 3)
         time.sleep(sleep_time/5)
