@@ -8,6 +8,7 @@ app = FastAPI()
 
 statsd = StatsClient()
 
+mod = 1
 
 def calc(cnt: int = None):
     r = 1
@@ -20,6 +21,12 @@ def calc(cnt: int = None):
 @statsd.timer("app.root")
 def root(cnt: int = None):
     statsd.incr("app.root.called")
+    if mod%2 :
+        return {"message": "not serving even requests"}
+    else:
+        mod += 1
+    
+
     if cnt:
         sleep_time = random.randint(0, cnt * 3)
         time.sleep(sleep_time/5)
