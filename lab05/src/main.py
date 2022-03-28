@@ -8,7 +8,7 @@ app = FastAPI()
 
 statsd = StatsClient()
 
-mod = 1
+even = False
 
 def calc(cnt: int = None):
     r = 1
@@ -21,10 +21,12 @@ def calc(cnt: int = None):
 @statsd.timer("app.root")
 def root(cnt: int = None):
     statsd.incr("app.root.called")
-    if mod%2 :
+    if even:
+        even = False
         return {"message": "not serving even requests"}
     else:
-        mod += 1
+        even = True
+        return {"message": "happily serving odd requests"}
     
 
     if cnt:
