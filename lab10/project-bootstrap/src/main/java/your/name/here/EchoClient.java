@@ -26,7 +26,7 @@ public class EchoClient {
     private static final Logger log = LoggerFactory.getLogger(EchoClient.class);
 
     @PostMapping("/user_tags")
-    public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
+    public ResponseEntity<String> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
         URI location = "/user_tags";
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(location);
