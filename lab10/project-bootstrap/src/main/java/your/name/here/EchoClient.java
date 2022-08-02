@@ -33,6 +33,7 @@ public class EchoClient {
         return ResponseEntity.noContent().build();
     }
 
+
     @PostMapping("/user_profiles/{cookie}")
     public ResponseEntity<UserProfileResult> getUserProfile(@PathVariable("cookie") String cookie,
             @RequestParam("time_range") String timeRangeStr,
