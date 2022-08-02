@@ -1,12 +1,9 @@
 package ks406362;
 
-import java.util.List;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.net.URI;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,12 +18,23 @@ import ks406362.domain.UserProfileResult;
 import ks406362.domain.UserTagEvent;
 
 @RestController
-public class EchoClient {
+public class Client {
 
-    private static final Logger log = LoggerFactory.getLogger(EchoClient.class);
+    private static final Logger log = LoggerFactory.getLogger(Client.class);
+    private HashMap<String, List<UserTagEvent>> usersViews = new HashMap<>();
+    private HashMap<String, List<UserTagEvent>> usersBuys = new HashMap<>();
 
     @PostMapping("/user_tags")
     public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
+        HashMap<String, List<UserTagEvent>> userEvents = userTag.action() == Action.BUY ? usersBuys : usersViews;
+        List<UserTagEvent> events = userEvents.get(userTag.cookie());
+        if (events != null) {
+            events.add(userTag);
+            userEvents.replace(userTag.cookie(), events);
+        } else {
+            List<UserTagEvent> newEvents = new LinkedList<>();
+            userEvents.put(userTag.cookie(), newEvents);
+        }
         return ResponseEntity.noContent().build();
     }
 
@@ -36,8 +44,18 @@ public class EchoClient {
             @RequestParam("time_range") String timeRangeStr,
             @RequestParam(defaultValue = "200") int limit,
             @RequestBody(required = false) UserProfileResult expectedResult) {
-
-        return ResponseEntity.ok(expectedResult);
+        List<UserTagEvent> buys = usersBuys.get(cookie);
+        if (buys == null) {
+            buys = new LinkedList<>();
+        }
+        List<UserTagEvent> views = usersViews.get(cookie);
+        if (views == null) {
+            views = new LinkedList<>();
+        }
+        UserProfileResult result = new UserProfileResult(cookie, views, buys);
+        log.debug(String.valueOf(result));
+        log.debug(String.valueOf(expectedResult));
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/aggregates")
