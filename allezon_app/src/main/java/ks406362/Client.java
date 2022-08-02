@@ -53,8 +53,8 @@ public class Client {
             views = new LinkedList<>();
         }
         UserProfileResult result = new UserProfileResult(cookie, views, buys);
-        log.debug(String.valueOf(result));
-        log.debug(String.valueOf(expectedResult));
+        log.info(String.valueOf(result));
+        log.info(String.valueOf(expectedResult));
         return ResponseEntity.ok(result);
     }
 
