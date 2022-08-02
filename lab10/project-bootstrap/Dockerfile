@@ -7,8 +7,8 @@ USER worker:worker
 
 ARG JAR_FILE
 
-ADD ${JAR_FILE} /app/app.jar
+ADD ${JAR_FILE} /target/app.jar
 
 ENTRYPOINT java \
     -Xmx2g \
-    -jar /app/app.jar
+    -jar /target/app.jar
