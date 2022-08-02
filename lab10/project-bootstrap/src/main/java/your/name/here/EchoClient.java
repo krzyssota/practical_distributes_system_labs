@@ -24,8 +24,8 @@ public class EchoClient {
 
     @PostMapping("/user_tags")
     public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
-
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
+        //return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/user_profiles/{cookie}")
