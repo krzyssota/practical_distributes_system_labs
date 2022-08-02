@@ -26,12 +26,11 @@ public class EchoClient {
     private static final Logger log = LoggerFactory.getLogger(EchoClient.class);
 
     @PostMapping("/user_tags")
-    public ResponseEntity<String> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("MyResponseHeader", "MyValue");
-
-        return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
-        //return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
+        //HttpHeaders responseHeaders = new HttpHeaders();
+        //responseHeaders.set("MyResponseHeader", "MyValue");
+        //return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/user_profiles/{cookie}")
