@@ -33,7 +33,7 @@ public class Client {
             events.add(userTag);
             userEvents.replace(cookie, events);
         } else {
-            List<UserTagEvent> newEvents = new LinkedList<>();
+            List<UserTagEvent> newEvents = new LinkedList<>(Collections.singleton(userTag));
             userEvents.put(cookie, newEvents);
         }
 
@@ -45,9 +45,11 @@ public class Client {
         List<UserTagEvent> views = usersViews.get(cookie);
 
         if (buys != null) {
+            log.info("buys");
             log.info(String.valueOf(buys));
         }
         if (views != null) {
+            log.info("views");
             log.info(String.valueOf(views));
         }
         //
