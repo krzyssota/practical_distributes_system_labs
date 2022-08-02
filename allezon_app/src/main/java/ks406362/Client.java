@@ -30,13 +30,13 @@ public class Client {
         String cookie = userTag.cookie();
         List<UserTagEvent> events = userEvents.get(cookie);
         if (events != null) {
-            log.info("adding one more event");
-            log.info(String.valueOf(userTag));
+            log.debug("adding one more event");
+            log.debug(String.valueOf(userTag));
             events.add(userTag);
             userEvents.replace(cookie, events);
         } else {
-            log.info("first event of user");
-            log.info(String.valueOf(userTag));
+            log.debug("first event of user");
+            log.debug(String.valueOf(userTag));
             List<UserTagEvent> newEvents = new LinkedList<>(Collections.singleton(userTag));
             userEvents.put(cookie, newEvents);
         }
@@ -46,12 +46,12 @@ public class Client {
         List<UserTagEvent> views = usersViews.get(cookie);
 
         if (buys != null) {
-            log.info("buys");
-            log.info(String.valueOf(buys));
+            log.debug("buys");
+            log.debug(String.valueOf(buys));
         }
         if (views != null) {
-            log.info("views");
-            log.info(String.valueOf(views));
+            log.debug("views");
+            log.debug(String.valueOf(views));
         }
         //
 
@@ -73,10 +73,10 @@ public class Client {
             views = new LinkedList<>();
         }
         UserProfileResult result = new UserProfileResult(cookie, views, buys);
-        log.info("retrieved result");
-        log.info(String.valueOf(result));
-        log.info("expected result");
-        log.info(String.valueOf(expectedResult));
+        log.debug("retrieved result");
+        log.debug(String.valueOf(result));
+        log.debug("expected result");
+        log.debug(String.valueOf(expectedResult));
         return ResponseEntity.ok(result);
     }
 
