@@ -38,15 +38,18 @@ public class Client {
         }
 
         // debug
-        log.info("added", userTag);
+        log.info("added");
+        log.info(String.valueOf(userTag));
 
         List<UserTagEvent> buys = usersBuys.get(cookie);
         List<UserTagEvent> views = usersViews.get(cookie);
 
-        log.info("debug");
-        log.info(String.valueOf(buys));
-        log.info(String.valueOf(views));
-
+        if (buys != null) {
+            log.info(String.valueOf(buys));
+        }
+        if (views != null) {
+            log.info(String.valueOf(views));
+        }
         //
 
         return ResponseEntity.noContent().build();
@@ -67,8 +70,10 @@ public class Client {
             views = new LinkedList<>();
         }
         UserProfileResult result = new UserProfileResult(cookie, views, buys);
-        log.info("retrieved result", String.valueOf(result));
-        log.info("expected result", String.valueOf(expectedResult));
+        log.info("retrieved result");
+        log.info(String.valueOf(result));
+        log.info("expected result");
+        log.info(String.valueOf(expectedResult));
         return ResponseEntity.ok(result);
     }
 
