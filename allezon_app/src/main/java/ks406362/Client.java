@@ -27,14 +27,28 @@ public class Client {
     @PostMapping("/user_tags")
     public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
         HashMap<String, List<UserTagEvent>> userEvents = userTag.action() == Action.BUY ? usersBuys : usersViews;
-        List<UserTagEvent> events = userEvents.get(userTag.cookie());
+        String cookie = userTag.cookie();
+        List<UserTagEvent> events = userEvents.get(cookie);
         if (events != null) {
             events.add(userTag);
-            userEvents.replace(userTag.cookie(), events);
+            userEvents.replace(cookie, events);
         } else {
             List<UserTagEvent> newEvents = new LinkedList<>();
-            userEvents.put(userTag.cookie(), newEvents);
+            userEvents.put(cookie, newEvents);
         }
+
+        // debug
+        log.info("added", userTag);
+
+        List<UserTagEvent> buys = usersBuys.get(cookie);
+        List<UserTagEvent> views = usersViews.get(cookie);
+
+        log.info("debug");
+        log.info(String.valueOf(buys));
+        log.info(String.valueOf(views));
+
+        //
+
         return ResponseEntity.noContent().build();
     }
 
@@ -53,8 +67,8 @@ public class Client {
             views = new LinkedList<>();
         }
         UserProfileResult result = new UserProfileResult(cookie, views, buys);
-        log.info(String.valueOf(result));
-        log.info(String.valueOf(expectedResult));
+        log.info("retrieved result", String.valueOf(result));
+        log.info("expected result", String.valueOf(expectedResult));
         return ResponseEntity.ok(result);
     }
 
