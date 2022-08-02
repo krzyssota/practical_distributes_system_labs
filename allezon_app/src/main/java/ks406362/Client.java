@@ -30,15 +30,19 @@ public class Client {
         String cookie = userTag.cookie();
         List<UserTagEvent> events = userEvents.get(cookie);
         if (events != null) {
+            log.info("adding one more event");
+            log.info(String.valueOf(userTag));
             events.add(userTag);
             userEvents.replace(cookie, events);
         } else {
+            log.info("first event of user");
+            log.info(String.valueOf(userTag));
             List<UserTagEvent> newEvents = new LinkedList<>(Collections.singleton(userTag));
             userEvents.put(cookie, newEvents);
         }
 
         // debug
-        log.info("added");
+        log.info("adding");
         log.info(String.valueOf(userTag));
 
         List<UserTagEvent> buys = usersBuys.get(cookie);
