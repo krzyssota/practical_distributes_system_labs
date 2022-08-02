@@ -27,6 +27,7 @@ public class EchoClient {
 
     @PostMapping("/user_tags")
     public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
+        log.info("halko");
         return ResponseEntity.noContent().build();
     }
 
