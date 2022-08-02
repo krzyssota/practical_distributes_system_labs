@@ -27,7 +27,7 @@ public class EchoClient {
 
     @PostMapping("/user_tags")
     public ResponseEntity<String> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
-        URI location = "/user_tags";
+        URI location = new URI("/user_tags");
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.setLocation(location);
         responseHeaders.set("MyResponseHeader", "MyValue");
