@@ -21,8 +21,8 @@ import ks406362.domain.UserTagEvent;
 public class Client {
 
     private static final Logger log = LoggerFactory.getLogger(Client.class);
-    private HashMap<String, List<UserTagEvent>> usersViews = new HashMap<>();
-    private HashMap<String, List<UserTagEvent>> usersBuys = new HashMap<>();
+    private final HashMap<String, List<UserTagEvent>> usersViews = new HashMap<>();
+    private final HashMap<String, List<UserTagEvent>> usersBuys = new HashMap<>();
 
     @PostMapping("/user_tags")
     public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
@@ -42,9 +42,6 @@ public class Client {
         }
 
         // debug
-        log.info("adding");
-        log.info(String.valueOf(userTag));
-
         List<UserTagEvent> buys = usersBuys.get(cookie);
         List<UserTagEvent> views = usersViews.get(cookie);
 
