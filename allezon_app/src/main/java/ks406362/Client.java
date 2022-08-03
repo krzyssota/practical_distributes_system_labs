@@ -39,8 +39,8 @@ public class Client {
             events.add(userTag);
             userEvents.replace(cookie, events);
         } else {
-            log.debug("first event of user");
-            log.debug(String.valueOf(userTag));
+            log.info("first event of user");
+            log.info(String.valueOf(userTag));
             List<UserTagEvent> newEvents = new LinkedList<>(Collections.singleton(userTag));
             //Queue<UserTagEvent> newEvents = EvictingQueue.create(200);
             //newEvents.add(userTag);

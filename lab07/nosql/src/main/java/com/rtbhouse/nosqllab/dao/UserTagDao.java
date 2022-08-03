@@ -1,9 +1,6 @@
 package com.rtbhouse.nosqllab.dao;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -34,11 +31,11 @@ import com.aerospike.client.query.Statement;
 import com.aerospike.client.task.RegisterTask;
 import com.rtbhouse.nosqllab.avro.SerDe;
 import com.rtbhouse.nosqllab.schema.SchemaVersion;
-import com.rtbhouse.nosqllab.Message;
+import com.rtbhouse.nosqllab.UserTag;
 
 
 @Component
-public class MessageDao {
+public class UserTagDao {
 
     private static final String NAMESPACE = "mimuw";
     private static final String SET = "messages";
@@ -46,7 +43,7 @@ public class MessageDao {
     private static final String VERSION_BIN = "version";
 
     private AerospikeClient client;
-    private SerDe<Message> serde;
+    private SerDe<UserTag> serde;
 
     @Autowired
     private SchemaVersion schemaVersion;
@@ -67,9 +64,9 @@ public class MessageDao {
         return defaulClientPolicy;
     }
 
-    public MessageDao(@Value("${aerospike.seeds}") String[] aerospikeSeeds, @Value("${aerospike.port}") int port) {
+    public UserTagDao(@Value("${aerospike.seeds}") String[] aerospikeSeeds, @Value("${aerospike.port}") int port) {
         this.client = new AerospikeClient(defaultClientPolicy(), Arrays.stream(aerospikeSeeds).map(seed -> new Host(seed, port)).toArray(Host[]::new));
-        this.serde = new SerDe<>(Message.getClassSchema());
+        this.serde = new SerDe<>(UserTag.getClassSchema());
     }
 
     @PostConstruct
@@ -79,19 +76,19 @@ public class MessageDao {
         task.waitTillComplete(1000, 10000);
     }
 
-    public void put(Message message) {
+    public void put(UserTag tag) {
         WritePolicy writePolicy = new WritePolicy(client.writePolicyDefault);
 
-        Key key = new Key(NAMESPACE, SET, String.valueOf(message.getId()));
+        Key key = new Key(NAMESPACE, SET, String.valueOf(tag.getCookie()));
         Bin versionBin = new Bin(VERSION_BIN, schemaVersion.getCurrentSchemaVersion());
-        Bin messageBin = new Bin(MESSAGE_BIN, serde.serialize(message));
+        Bin messageBin = new Bin(MESSAGE_BIN, serde.serialize(tag));
         client.put(writePolicy, key, versionBin, messageBin);
     }
 
-    public Message get(long id) {
+    public UserTag get(String cookie) {
         Policy readPolicy = new Policy(client.readPolicyDefault);
 
-        Key key = new Key(NAMESPACE, SET, String.valueOf(id));
+        Key key = new Key(NAMESPACE, SET, cookie);
         Record record = client.get(readPolicy, key, VERSION_BIN, MESSAGE_BIN);
 
         if (record == null) {
@@ -100,7 +97,7 @@ public class MessageDao {
 
         int writerSchemaId = record.getInt(VERSION_BIN);
         if (schemaVersion.getCurrentSchemaVersion() == writerSchemaId) {
-            return serde.deserialize((byte[]) record.getValue(MESSAGE_BIN), Message.getClassSchema());
+            return serde.deserialize((byte[]) record.getValue(MESSAGE_BIN), UserTag.getClassSchema());
         }
 
         String schema = schemaRegistryClient.fetch(writerSchemaId);
@@ -117,7 +114,9 @@ public class MessageDao {
         statement.setSetName(SET);
 
         try (ResultSet resultSet = client.queryAggregate(null, statement, "count", "count")) {
-            Iterator<Object> iterator = resultSet.iterator();
+
+           Iterator<Object> iterator = resultSet.iterator();
+
             if (iterator.hasNext()) {
                 return (Long) iterator.next();
             }
