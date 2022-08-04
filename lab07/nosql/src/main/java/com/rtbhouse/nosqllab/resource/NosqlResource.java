@@ -2,6 +2,7 @@ package com.rtbhouse.nosqllab.resource;
 
 import static com.rtbhouse.nosqllab.avro2json.AvroJsonHttpMessageConverter.AVRO_JSON;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ import com.rtbhouse.nosqllab.UserTag;
 @RequestMapping("/endpoint")
 public class NosqlResource {
 
+    public NosqlResource(UserTagDao userTagDao) {
+        this.userTagDao = userTagDao;
+    }
+
     @Autowired
     private UserTagDao userTagDao;
 
@@ -37,6 +42,18 @@ public class NosqlResource {
     @GetMapping(path = "/count")
     public ResponseEntity<Long> count() {
         return ResponseEntity.ok(userTagDao.count());
+    }
+
+    @GetMapping(path = "/allKeys")
+    public ResponseEntity<List<String>> getAllKeys() {
+
+        return ResponseEntity.ok(userTagDao.getAllKeys());
+    }
+
+    @GetMapping(produces = AVRO_JSON, path = "/delete/{cookie}")
+    public ResponseEntity<String> delete(@PathVariable("cookie") String cookie) {
+        userTagDao.delete(cookie);
+        return ResponseEntity.ok("deleted " + cookie);
     }
 
 

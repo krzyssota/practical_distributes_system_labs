@@ -1,37 +1,29 @@
 package com.rtbhouse.nosqllab.dao;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.*;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import com.aerospike.client.*;
+import com.aerospike.client.Record;
+import com.aerospike.client.policy.*;
 import org.apache.avro.Schema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.schema.registry.client.SchemaRegistryClient;
 import org.springframework.stereotype.Component;
 
-import com.aerospike.client.AerospikeClient;
-import com.aerospike.client.Bin;
-import com.aerospike.client.Host;
-import com.aerospike.client.Key;
-import com.aerospike.client.Language;
-import com.aerospike.client.Record;
 import com.aerospike.client.lua.LuaConfig;
-import com.aerospike.client.policy.ClientPolicy;
-import com.aerospike.client.policy.CommitLevel;
-import com.aerospike.client.policy.Policy;
-import com.aerospike.client.policy.RecordExistsAction;
-import com.aerospike.client.policy.Replica;
-import com.aerospike.client.policy.WritePolicy;
 import com.aerospike.client.query.ResultSet;
 import com.aerospike.client.query.Statement;
 import com.aerospike.client.task.RegisterTask;
 import com.rtbhouse.nosqllab.avro.SerDe;
 import com.rtbhouse.nosqllab.schema.SchemaVersion;
 import com.rtbhouse.nosqllab.UserTag;
+
+
 
 
 @Component
@@ -67,6 +59,9 @@ public class UserTagDao {
     public UserTagDao(@Value("${aerospike.seeds}") String[] aerospikeSeeds, @Value("${aerospike.port}") int port) {
         this.client = new AerospikeClient(defaultClientPolicy(), Arrays.stream(aerospikeSeeds).map(seed -> new Host(seed, port)).toArray(Host[]::new));
         this.serde = new SerDe<>(UserTag.getClassSchema());
+
+        Log.setCallbackStandard();
+        Log.setLevel(Log.Level.INFO);
     }
 
     @PostConstruct
@@ -78,6 +73,7 @@ public class UserTagDao {
 
     public void put(UserTag tag) {
         WritePolicy writePolicy = new WritePolicy(client.writePolicyDefault);
+        writePolicy.sendKey = true;
 
         Key key = new Key(NAMESPACE, SET, String.valueOf(tag.getCookie()));
         Bin versionBin = new Bin(VERSION_BIN, schemaVersion.getCurrentSchemaVersion());
@@ -85,12 +81,32 @@ public class UserTagDao {
         client.put(writePolicy, key, versionBin, messageBin);
     }
 
+    public void delete(String cookie){
+        WritePolicy writePolicy = new WritePolicy(client.writePolicyDefault);
+        Key key = new Key(NAMESPACE, SET, cookie);
+
+        client.delete(writePolicy, key);
+    }
+
+    public List<String> getAllKeys(){
+            List<String> keys = new ArrayList<>();
+            ScanPolicy scanPolicy = new ScanPolicy();
+            scanPolicy.includeBinData = false;
+            client.scanAll(scanPolicy, NAMESPACE, SET,
+                    (key, record) -> {
+                        com.aerospike.client.Value userKey = key.userKey;
+                        if (userKey != null) {
+                            keys.add(key.userKey.toString());
+                        }
+                    });
+            return keys;
+    }
+
     public UserTag get(String cookie) {
         Policy readPolicy = new Policy(client.readPolicyDefault);
 
         Key key = new Key(NAMESPACE, SET, cookie);
         Record record = client.get(readPolicy, key, VERSION_BIN, MESSAGE_BIN);
-
         if (record == null) {
             return null;
         }

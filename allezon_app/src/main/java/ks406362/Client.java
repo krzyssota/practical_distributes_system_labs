@@ -42,8 +42,6 @@ public class Client {
             log.info("first event of user");
             log.info(String.valueOf(userTag));
             List<UserTagEvent> newEvents = new LinkedList<>(Collections.singleton(userTag));
-            //Queue<UserTagEvent> newEvents = EvictingQueue.create(200);
-            //newEvents.add(userTag);
             userEvents.put(cookie, newEvents);
         }
 
