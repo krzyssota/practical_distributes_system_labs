@@ -1,15 +1,15 @@
 [
-  {"namespace": "com.rtbhouse.nosqllab",
+  {"namespace": "ks406362.generated",
     "type": "record",
     "name": "ProductInfo",
     "fields": [
-      {"name": "product_id", "type": "string"},
+      {"name": "product_id", "type": "int"},
       {"name": "brand_id", "type": "string"},
       {"name": "category_id", "type": "string"},
       {"name": "price", "type": "int"}
     ]
   },
-  {"namespace": "com.rtbhouse.nosqllab",
+  {"namespace": "ks406362.generated",
     "type": "record",
     "name": "UserTag",
     "fields": [
@@ -20,7 +20,7 @@
       {"name": "product_info", "type": "ProductInfo"}
     ]
   },
-  {"namespace": "com.rtbhouse.nosqllab",
+  {"namespace": "ks406362.generated",
     "type": "record",
     "name": "UserTags",
     "fields": [

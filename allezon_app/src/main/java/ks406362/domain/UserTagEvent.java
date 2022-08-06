@@ -25,4 +25,39 @@ public record UserTagEvent(Instant time, String cookie, String country, Device d
                 Product.getProductFromGeneratedProductInfo(tag.getProductInfo()));
     }
 
+
+    @Override
+    public Instant time() {
+        return time;
+    }
+
+    @Override
+    public String cookie() {
+        return cookie;
+    }
+
+    @Override
+    public String country() {
+        return country;
+    }
+
+    @Override
+    public Device device() {
+        return device;
+    }
+
+    @Override
+    public Action action() {
+        return action;
+    }
+
+    @Override
+    public String origin() {
+        return origin;
+    }
+
+    @Override
+    public Product product() {
+        return product;
+    }
 }

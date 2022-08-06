@@ -1,5 +1,8 @@
 package ks406362;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import com.aerospike.client.Log;
@@ -43,6 +46,15 @@ public class Client {
         return ResponseEntity.ok(userTagDao.getAllKeys());
     }
 
+    @GetMapping(path = "/deleteAllKeys")
+    public ResponseEntity<String> deleteAllKeys() {
+        List<String> keys = userTagDao.getAllKeys();
+        for (String cookie:keys){
+            userTagDao.delete(cookie);
+        }
+        return ResponseEntity.ok("deleted everything");
+    }
+
 /*    @PutMapping(produces = AVRO_JSON, consumes = AVRO_JSON)
     public ResponseEntity<UserTags> put(@RequestBody UserTags tags) {
         userTagDao.put(tags);
@@ -54,6 +66,18 @@ public class Client {
         userTagDao.delete(cookie);
         return ResponseEntity.ok("deleted " + cookie);
     }
+
+    @GetMapping(produces = AVRO_JSON, path = "/peek/{cookie}")
+    public ResponseEntity<UserTags> peek(@PathVariable("cookie") String cookie) {
+        UserTags userTags = userTagDao.get(cookie);
+        if(userTags != null){
+            Log.debug("userTags: " + userTags.toString());
+        }
+        return ResponseEntity.ok(userTags);
+    }
+
+
+
 
 
     // ---------------------------------------------------------------------------
@@ -75,27 +99,41 @@ public class Client {
     }
 
     @PostMapping("/user_profiles/{cookie}")
-    public ResponseEntity<UserProfileResult> getUserProfile(@PathVariable("cookie") String cookie,
+   /* public ResponseEntity<UserProfileResult> getUserProfileResult(@PathVariable("cookie") String cookie,
                                                             @RequestParam("time_range") String timeRangeStr,
                                                             @RequestParam(defaultValue = "200") int limit,
                                                             @RequestBody(required = false) UserProfileResult expectedResult) {
         // TODO: handle timeRange and limit
-        Log.debug("haaalko");
         UserTags userTags = userTagDao.get(cookie);
-        Log.debug("userTags: " + userTags.toString());
+        if (userTags != null) {
+            UserProfileResult result = new UserProfileResult(userTags);
+            Log.debug("retrieved result " + result);
+            Log.debug("expected result " + expectedResult);
+            return ResponseEntity.ok(result);
+        } else {
+            Log.error("couldn't get user profile of " + cookie);
+            return ResponseEntity.ok(expectedResult);
 
+        }
 
-        Log.debug("map over userTags" + userTags.getViews().stream().map(t -> new UserTagEvent(cookie, Action.VIEW, t)).toList());
-
-        UserProfileResult result = new UserProfileResult(userTags);
-
-        Log.debug("retrieved result");
-        Log.debug(String.valueOf(result));
-        Log.debug("expected result");
-        Log.debug(String.valueOf(expectedResult));
-
-        return ResponseEntity.ok(expectedResult);
+    }*/
+    public ResponseEntity<UserTags> getUserProfileTags(@PathVariable("cookie") String cookie,
+                                                            @RequestParam("time_range") String timeRangeStr,
+                                                            @RequestParam(defaultValue = "200") int limit,
+                                                            @RequestBody(required = false) UserProfileResult expectedResult) {
+        // TODO: handle timeRange and limit
+        UserTags userTags = userTagDao.get(cookie);
+        if (userTags != null) {
+            Log.debug("retrieved userTags: " + userTags);
+            Log.debug("retrieved result " +  new UserProfileResult(userTags));
+            Log.debug("expected result " + expectedResult);
+            return ResponseEntity.ok(userTags);
+        } else {
+            return ResponseEntity.ok(null);
+        }
     }
+
+
 
     @PostMapping("/aggregates")
     public ResponseEntity<AggregatesQueryResult> getAggregates(@RequestParam("time_range") String timeRangeStr,
