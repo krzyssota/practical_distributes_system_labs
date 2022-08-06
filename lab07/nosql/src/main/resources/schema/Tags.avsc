@@ -3,7 +3,7 @@
     "type": "record",
     "name": "ProductInfo",
     "fields": [
-        {"name": "product_id", "type": "int"},
+        {"name": "product_id", "type": "string"},
         {"name": "brand_id", "type": "string"},
         {"name": "category_id", "type": "string"},
         {"name": "price", "type": "int"}

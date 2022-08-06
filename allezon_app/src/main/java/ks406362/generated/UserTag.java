@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class UserTag extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6821241432658146028L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserTag\",\"namespace\":\"ks406362.generated\",\"fields\":[{\"name\":\"time\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"device\",\"type\":{\"type\":\"enum\",\"name\":\"device_enum\",\"symbols\":[\"PC\",\"MOBILE\",\"TV\"]}},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"product_info\",\"type\":{\"type\":\"record\",\"name\":\"ProductInfo\",\"fields\":[{\"name\":\"product_id\",\"type\":\"int\"},{\"name\":\"brand_id\",\"type\":\"string\"},{\"name\":\"category_id\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"int\"}]}}]}");
+  private static final long serialVersionUID = 1191834092542835729L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserTag\",\"namespace\":\"ks406362.generated\",\"fields\":[{\"name\":\"time\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"device\",\"type\":{\"type\":\"enum\",\"name\":\"device_enum\",\"symbols\":[\"PC\",\"MOBILE\",\"TV\"]}},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"product_info\",\"type\":{\"type\":\"record\",\"name\":\"ProductInfo\",\"fields\":[{\"name\":\"product_id\",\"type\":\"string\"},{\"name\":\"brand_id\",\"type\":\"string\"},{\"name\":\"category_id\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"int\"}]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();

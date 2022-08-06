@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6770484037739483556L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ProductInfo\",\"namespace\":\"ks406362.generated\",\"fields\":[{\"name\":\"product_id\",\"type\":\"int\"},{\"name\":\"brand_id\",\"type\":\"string\"},{\"name\":\"category_id\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"int\"}]}");
+  private static final long serialVersionUID = 3609990725224689062L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ProductInfo\",\"namespace\":\"ks406362.generated\",\"fields\":[{\"name\":\"product_id\",\"type\":\"string\"},{\"name\":\"brand_id\",\"type\":\"string\"},{\"name\":\"category_id\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"int\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -71,7 +71,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     return DECODER.decode(b);
   }
 
-  @Deprecated public int product_id;
+  @Deprecated public CharSequence product_id;
   @Deprecated public CharSequence brand_id;
   @Deprecated public CharSequence category_id;
   @Deprecated public int price;
@@ -90,7 +90,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * @param category_id The new value for category_id
    * @param price The new value for price
    */
-  public ProductInfo(Integer product_id, CharSequence brand_id, CharSequence category_id, Integer price) {
+  public ProductInfo(CharSequence product_id, CharSequence brand_id, CharSequence category_id, Integer price) {
     this.product_id = product_id;
     this.brand_id = brand_id;
     this.category_id = category_id;
@@ -114,7 +114,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
   @SuppressWarnings(value="unchecked")
   public void put(int field$, Object value$) {
     switch (field$) {
-    case 0: product_id = (Integer)value$; break;
+    case 0: product_id = (CharSequence)value$; break;
     case 1: brand_id = (CharSequence)value$; break;
     case 2: category_id = (CharSequence)value$; break;
     case 3: price = (Integer)value$; break;
@@ -126,7 +126,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'product_id' field.
    * @return The value of the 'product_id' field.
    */
-  public int getProductId() {
+  public CharSequence getProductId() {
     return product_id;
   }
 
@@ -135,7 +135,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'product_id' field.
    * @param value the value to set.
    */
-  public void setProductId(int value) {
+  public void setProductId(CharSequence value) {
     this.product_id = value;
   }
 
@@ -230,7 +230,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ProductInfo>
     implements org.apache.avro.data.RecordBuilder<ProductInfo> {
 
-    private int product_id;
+    private CharSequence product_id;
     private CharSequence brand_id;
     private CharSequence category_id;
     private int price;
@@ -292,7 +292,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'product_id' field.
       * @return The value.
       */
-    public int getProductId() {
+    public CharSequence getProductId() {
       return product_id;
     }
 
@@ -302,7 +302,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'product_id'.
       * @return This builder.
       */
-    public Builder setProductId(int value) {
+    public Builder setProductId(CharSequence value) {
       validate(fields()[0], value);
       this.product_id = value;
       fieldSetFlags()[0] = true;
@@ -323,6 +323,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public Builder clearProductId() {
+      product_id = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -451,7 +452,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     public ProductInfo build() {
       try {
         ProductInfo record = new ProductInfo();
-        record.product_id = fieldSetFlags()[0] ? this.product_id : (Integer) defaultValue(fields()[0]);
+        record.product_id = fieldSetFlags()[0] ? this.product_id : (CharSequence) defaultValue(fields()[0]);
         record.brand_id = fieldSetFlags()[1] ? this.brand_id : (CharSequence) defaultValue(fields()[1]);
         record.category_id = fieldSetFlags()[2] ? this.category_id : (CharSequence) defaultValue(fields()[2]);
         record.price = fieldSetFlags()[3] ? this.price : (Integer) defaultValue(fields()[3]);
@@ -487,7 +488,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeInt(this.product_id);
+    out.writeString(this.product_id);
 
     out.writeString(this.brand_id);
 
@@ -502,7 +503,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.product_id = in.readInt();
+      this.product_id = in.readString(this.product_id instanceof Utf8 ? (Utf8)this.product_id : null);
 
       this.brand_id = in.readString(this.brand_id instanceof Utf8 ? (Utf8)this.brand_id : null);
 
@@ -514,7 +515,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       for (int i = 0; i < 4; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.product_id = in.readInt();
+          this.product_id = in.readString(this.product_id instanceof Utf8 ? (Utf8)this.product_id : null);
           break;
 
         case 1:
