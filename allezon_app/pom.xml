@@ -103,24 +103,6 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro-maven-plugin</artifactId>
-                <version>1.9.1</version>
-                <executions>
-                    <execution>
-                        <id>domain-classes</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>schema</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirectory>src/main/resources/schema</sourceDirectory>
-                            <outputDirectory>src/main/generated/java</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
 
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
