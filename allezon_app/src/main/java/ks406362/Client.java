@@ -62,7 +62,6 @@ public class Client {
 
     @PostMapping("/user_tags")
     public ResponseEntity<Void> incomingUserTagEvent(@RequestBody() UserTagEvent userTagEvent) {
-        //Log.debug("usertagevent " + userTagEvent.toString());
         CharSequence t = userTagEvent.time().toString();
         CharSequence c = userTagEvent.country();
         Device d = userTagEvent.device();
@@ -73,40 +72,6 @@ public class Client {
 
         return ResponseEntity.noContent().build();
     }
-    /*public ResponseEntity<Void> addUserTag(@RequestBody() UserTagEvent userTag) {
-        HashMap<String, List<UserTagEvent>> userEvents = userTag.action() == Action.BUY ? usersBuys : usersViews;
-
-        String cookie = userTag.cookie();
-        List<UserTagEvent> events = userEvents.get(cookie);
-        if (events != null) {
-            log.debug("adding one more event");
-            log.debug(String.valueOf(userTag));
-            events.add(userTag);
-            userEvents.replace(cookie, events);
-        } else {
-            log.info("first event of user");
-            log.info(String.valueOf(userTag));
-            List<UserTagEvent> newEvents = new LinkedList<>(Collections.singleton(userTag));
-            userEvents.put(cookie, newEvents);
-        }
-
-        // debug
-        List<UserTagEvent> buys = usersBuys.get(cookie);
-        List<UserTagEvent> views = usersViews.get(cookie);
-
-        if (buys != null) {
-            log.debug("buys");
-            log.debug(String.valueOf(buys));
-        }
-        if (views != null) {
-            log.debug("views");
-            log.debug(String.valueOf(views));
-        }
-        //
-
-        return ResponseEntity.noContent().build();
-    }*/
-
 
     @PostMapping("/user_profiles/{cookie}")
     public ResponseEntity<UserProfileResult> getUserProfile(@PathVariable("cookie") String cookie,
@@ -130,26 +95,6 @@ public class Client {
 
         return ResponseEntity.ok(expectedResult);
     }
-    /*public ResponseEntity<UserProfileResult> getUserProfile(@PathVariable("cookie") String cookie,
-            @RequestParam("time_range") String timeRangeStr,
-            @RequestParam(defaultValue = "200") int limit,
-            @RequestBody(required = false) UserProfileResult expectedResult) {
-
-        List<UserTagEvent> qBuys = usersBuys.get(cookie);
-        List<UserTagEvent> buys = qBuys == null ? new LinkedList<>() : qBuys.stream().toList();
-
-        List<UserTagEvent> qViews = usersViews.get(cookie);
-        List<UserTagEvent> views = qViews == null ? new LinkedList<>() : qViews.stream().toList();
-
-        UserProfileResult result = new UserProfileResult(cookie, views, buys);
-
-        log.debug("retrieved result");
-        log.debug(String.valueOf(result));
-        log.debug("expected result");
-        log.debug(String.valueOf(expectedResult));
-
-        return ResponseEntity.ok(result);
-    }*/
 
     @PostMapping("/aggregates")
     public ResponseEntity<AggregatesQueryResult> getAggregates(@RequestParam("time_range") String timeRangeStr,
