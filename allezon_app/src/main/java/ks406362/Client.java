@@ -32,10 +32,10 @@ public class Client {
     @Autowired
     private UserTagDao userTagDao;
 
-    @GetMapping("/count")
+   /* @GetMapping("/count")
     public ResponseEntity<Long> count() {
         return ResponseEntity.ok(userTagDao.count());
-    }
+    }*/
 
     @GetMapping(path = "/allKeys")
     public ResponseEntity<List<String>> getAllKeys() {

@@ -69,12 +69,12 @@ public class UserTagDao {
         Log.setLevel(Log.Level.INFO);
     }
 
-    @PostConstruct
+   /* @PostConstruct
     public void registerUdfs() throws IOException {
         LuaConfig.SourceDirectory = "src/main/resources/udf/";
         RegisterTask task = client.register(null, "src/main/resources/udf/count.lua", "count.lua", Language.LUA);
         task.waitTillComplete(1000, 10000);
-    }
+    }*/
 
     public void put(UserTags tags, WritePolicy writePolicy) {
 
@@ -187,7 +187,7 @@ public class UserTagDao {
         return keys;
     }
 
-    public Long count() {
+   /* public Long count() {
         Statement statement = new Statement();
         statement.setNamespace(NAMESPACE);
         statement.setSetName(SET);
@@ -202,7 +202,7 @@ public class UserTagDao {
             return 0L;
         }
     }
-
+*/
     @PreDestroy
     public void close() {
         client.close();
