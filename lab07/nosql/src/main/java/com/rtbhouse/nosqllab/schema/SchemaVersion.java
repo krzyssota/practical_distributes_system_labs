@@ -7,7 +7,7 @@ import org.springframework.cloud.schema.registry.SchemaRegistrationResponse;
 import org.springframework.cloud.schema.registry.client.SchemaRegistryClient;
 import org.springframework.stereotype.Component;
 
-import com.rtbhouse.nosqllab.UserTag;
+import com.rtbhouse.nosqllab.UserTags;
 
 @Component
 public class SchemaVersion implements InitializingBean {
@@ -23,7 +23,7 @@ public class SchemaVersion implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        SchemaRegistrationResponse register = schemaRegistryClient.register("Message", "avro", UserTag.getClassSchema().toString());
+        SchemaRegistrationResponse register = schemaRegistryClient.register("Message", "avro", UserTags.getClassSchema().toString());
         this.currentSchemaReference = register.getSchemaReference();
     }
 

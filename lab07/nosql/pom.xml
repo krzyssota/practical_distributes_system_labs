@@ -91,7 +91,7 @@
                             <goal>schema</goal>
                         </goals>
                         <configuration>
-                            <sourceDirectory>src/main/resources/schema/</sourceDirectory>
+                            <sourceDirectory>src/main/resources/schema</sourceDirectory>
                             <outputDirectory>src/main/generated/java</outputDirectory>
                         </configuration>
                     </execution>

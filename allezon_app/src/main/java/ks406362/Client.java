@@ -28,7 +28,7 @@ public class Client {
 
 
     @PostMapping("/user_tags")
-    public ResponseEntity<Void> addUserTag(@RequestBody(required = false) UserTagEvent userTag) {
+    public ResponseEntity<Void> addUserTag(@RequestBody() UserTagEvent userTag) {
         HashMap<String, List<UserTagEvent>> userEvents = userTag.action() == Action.BUY ? usersBuys : usersViews;
 
         String cookie = userTag.cookie();

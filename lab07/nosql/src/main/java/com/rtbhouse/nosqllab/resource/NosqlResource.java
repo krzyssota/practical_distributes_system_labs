@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rtbhouse.nosqllab.dao.UserTagDao;
+import com.rtbhouse.nosqllab.UserTags;
 import com.rtbhouse.nosqllab.UserTag;
+
 
 @RestController
 @RequestMapping("/endpoint")
@@ -29,15 +31,21 @@ public class NosqlResource {
     private UserTagDao userTagDao;
 
     @GetMapping(produces = AVRO_JSON, path = "/{cookie}")
-    public ResponseEntity<UserTag> get(@PathVariable("cookie") String cookie) {
+    public ResponseEntity<UserTags> get(@PathVariable("cookie") String cookie) {
         return ResponseEntity.of(Optional.ofNullable(userTagDao.get(cookie)));
     }
 
     @PutMapping(produces = AVRO_JSON, consumes = AVRO_JSON)
-    public ResponseEntity<UserTag> put(@RequestBody UserTag tag) {
-        userTagDao.put(tag);
-        return ResponseEntity.ok(tag);
+    public ResponseEntity<UserTags> put(@RequestBody UserTags tags) {
+        userTagDao.put(tags);
+        return ResponseEntity.ok(tags);
     }
+
+/*    @PutMapping(consumes = AVRO_JSON)
+    public ResponseEntity<String> append(@RequestBody UserTag tag) {
+        userTagDao.append(tag);
+        return ResponseEntity.ok("appended");
+    }*/
 
     @GetMapping(path = "/count")
     public ResponseEntity<Long> count() {
