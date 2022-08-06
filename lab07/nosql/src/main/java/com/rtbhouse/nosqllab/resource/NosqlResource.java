@@ -54,7 +54,6 @@ public class NosqlResource {
 
     @GetMapping(path = "/allKeys")
     public ResponseEntity<List<String>> getAllKeys() {
-
         return ResponseEntity.ok(userTagDao.getAllKeys());
     }
 
