@@ -5,7 +5,6 @@
  */
 package ks406362.generated;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
@@ -22,10 +21,10 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
   private static SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<ProductInfo> ENCODER =
-          new BinaryMessageEncoder<ProductInfo>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<ProductInfo>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<ProductInfo> DECODER =
-          new BinaryMessageDecoder<ProductInfo>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<ProductInfo>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -68,17 +67,13 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
   public static ProductInfo fromByteBuffer(
-          java.nio.ByteBuffer b) throws java.io.IOException {
+      java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  @JsonProperty("product_id")
   @Deprecated public int product_id;
-  @JsonProperty("brand_id")
-  @Deprecated public java.lang.CharSequence brand_id;
-  @JsonProperty("category_id")
-  @Deprecated public java.lang.CharSequence category_id;
-  @JsonProperty("price")
+  @Deprecated public CharSequence brand_id;
+  @Deprecated public CharSequence category_id;
   @Deprecated public int price;
 
   /**
@@ -95,35 +90,35 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * @param category_id The new value for category_id
    * @param price The new value for price
    */
-  public ProductInfo(java.lang.Integer product_id, java.lang.CharSequence brand_id, java.lang.CharSequence category_id, java.lang.Integer price) {
+  public ProductInfo(Integer product_id, CharSequence brand_id, CharSequence category_id, Integer price) {
     this.product_id = product_id;
     this.brand_id = brand_id;
     this.category_id = category_id;
     this.price = price;
   }
 
-  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+  public SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
-  public java.lang.Object get(int field$) {
+  public Object get(int field$) {
     switch (field$) {
-      case 0: return product_id;
-      case 1: return brand_id;
-      case 2: return category_id;
-      case 3: return price;
-      default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    case 0: return product_id;
+    case 1: return brand_id;
+    case 2: return category_id;
+    case 3: return price;
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   // Used by DatumReader.  Applications should not call.
   @SuppressWarnings(value="unchecked")
-  public void put(int field$, java.lang.Object value$) {
+  public void put(int field$, Object value$) {
     switch (field$) {
-      case 0: product_id = (java.lang.Integer)value$; break;
-      case 1: brand_id = (java.lang.CharSequence)value$; break;
-      case 2: category_id = (java.lang.CharSequence)value$; break;
-      case 3: price = (java.lang.Integer)value$; break;
-      default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    case 0: product_id = (Integer)value$; break;
+    case 1: brand_id = (CharSequence)value$; break;
+    case 2: category_id = (CharSequence)value$; break;
+    case 3: price = (Integer)value$; break;
+    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
@@ -148,7 +143,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'brand_id' field.
    * @return The value of the 'brand_id' field.
    */
-  public java.lang.CharSequence getBrandId() {
+  public CharSequence getBrandId() {
     return brand_id;
   }
 
@@ -157,7 +152,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'brand_id' field.
    * @param value the value to set.
    */
-  public void setBrandId(java.lang.CharSequence value) {
+  public void setBrandId(CharSequence value) {
     this.brand_id = value;
   }
 
@@ -165,7 +160,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'category_id' field.
    * @return The value of the 'category_id' field.
    */
-  public java.lang.CharSequence getCategoryId() {
+  public CharSequence getCategoryId() {
     return category_id;
   }
 
@@ -174,7 +169,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'category_id' field.
    * @param value the value to set.
    */
-  public void setCategoryId(java.lang.CharSequence value) {
+  public void setCategoryId(CharSequence value) {
     this.category_id = value;
   }
 
@@ -199,8 +194,8 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Creates a new ProductInfo RecordBuilder.
    * @return A new ProductInfo RecordBuilder
    */
-  public static ks406362.generated.ProductInfo.Builder newBuilder() {
-    return new ks406362.generated.ProductInfo.Builder();
+  public static Builder newBuilder() {
+    return new Builder();
   }
 
   /**
@@ -208,11 +203,11 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing builder to copy.
    * @return A new ProductInfo RecordBuilder
    */
-  public static ks406362.generated.ProductInfo.Builder newBuilder(ks406362.generated.ProductInfo.Builder other) {
+  public static Builder newBuilder(Builder other) {
     if (other == null) {
-      return new ks406362.generated.ProductInfo.Builder();
+      return new Builder();
     } else {
-      return new ks406362.generated.ProductInfo.Builder(other);
+      return new Builder(other);
     }
   }
 
@@ -221,11 +216,11 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing instance to copy.
    * @return A new ProductInfo RecordBuilder
    */
-  public static ks406362.generated.ProductInfo.Builder newBuilder(ks406362.generated.ProductInfo other) {
+  public static Builder newBuilder(ProductInfo other) {
     if (other == null) {
-      return new ks406362.generated.ProductInfo.Builder();
+      return new Builder();
     } else {
-      return new ks406362.generated.ProductInfo.Builder(other);
+      return new Builder(other);
     }
   }
 
@@ -233,11 +228,11 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * RecordBuilder for ProductInfo instances.
    */
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ProductInfo>
-          implements org.apache.avro.data.RecordBuilder<ProductInfo> {
+    implements org.apache.avro.data.RecordBuilder<ProductInfo> {
 
     private int product_id;
-    private java.lang.CharSequence brand_id;
-    private java.lang.CharSequence category_id;
+    private CharSequence brand_id;
+    private CharSequence category_id;
     private int price;
 
     /** Creates a new Builder */
@@ -249,7 +244,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(ks406362.generated.ProductInfo.Builder other) {
+    private Builder(Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.product_id)) {
         this.product_id = data().deepCopy(fields()[0].schema(), other.product_id);
@@ -273,7 +268,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing ProductInfo instance
      * @param other The existing instance to copy.
      */
-    private Builder(ks406362.generated.ProductInfo other) {
+    private Builder(ProductInfo other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.product_id)) {
         this.product_id = data().deepCopy(fields()[0].schema(), other.product_id);
@@ -294,20 +289,20 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     }
 
     /**
-     * Gets the value of the 'product_id' field.
-     * @return The value.
-     */
+      * Gets the value of the 'product_id' field.
+      * @return The value.
+      */
     public int getProductId() {
       return product_id;
     }
 
 
     /**
-     * Sets the value of the 'product_id' field.
-     * @param value The value of 'product_id'.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder setProductId(int value) {
+      * Sets the value of the 'product_id' field.
+      * @param value The value of 'product_id'.
+      * @return This builder.
+      */
+    public Builder setProductId(int value) {
       validate(fields()[0], value);
       this.product_id = value;
       fieldSetFlags()[0] = true;
@@ -315,38 +310,38 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     }
 
     /**
-     * Checks whether the 'product_id' field has been set.
-     * @return True if the 'product_id' field has been set, false otherwise.
-     */
+      * Checks whether the 'product_id' field has been set.
+      * @return True if the 'product_id' field has been set, false otherwise.
+      */
     public boolean hasProductId() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-     * Clears the value of the 'product_id' field.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder clearProductId() {
+      * Clears the value of the 'product_id' field.
+      * @return This builder.
+      */
+    public Builder clearProductId() {
       fieldSetFlags()[0] = false;
       return this;
     }
 
     /**
-     * Gets the value of the 'brand_id' field.
-     * @return The value.
-     */
-    public java.lang.CharSequence getBrandId() {
+      * Gets the value of the 'brand_id' field.
+      * @return The value.
+      */
+    public CharSequence getBrandId() {
       return brand_id;
     }
 
 
     /**
-     * Sets the value of the 'brand_id' field.
-     * @param value The value of 'brand_id'.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder setBrandId(java.lang.CharSequence value) {
+      * Sets the value of the 'brand_id' field.
+      * @param value The value of 'brand_id'.
+      * @return This builder.
+      */
+    public Builder setBrandId(CharSequence value) {
       validate(fields()[1], value);
       this.brand_id = value;
       fieldSetFlags()[1] = true;
@@ -354,39 +349,39 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     }
 
     /**
-     * Checks whether the 'brand_id' field has been set.
-     * @return True if the 'brand_id' field has been set, false otherwise.
-     */
+      * Checks whether the 'brand_id' field has been set.
+      * @return True if the 'brand_id' field has been set, false otherwise.
+      */
     public boolean hasBrandId() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-     * Clears the value of the 'brand_id' field.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder clearBrandId() {
+      * Clears the value of the 'brand_id' field.
+      * @return This builder.
+      */
+    public Builder clearBrandId() {
       brand_id = null;
       fieldSetFlags()[1] = false;
       return this;
     }
 
     /**
-     * Gets the value of the 'category_id' field.
-     * @return The value.
-     */
-    public java.lang.CharSequence getCategoryId() {
+      * Gets the value of the 'category_id' field.
+      * @return The value.
+      */
+    public CharSequence getCategoryId() {
       return category_id;
     }
 
 
     /**
-     * Sets the value of the 'category_id' field.
-     * @param value The value of 'category_id'.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder setCategoryId(java.lang.CharSequence value) {
+      * Sets the value of the 'category_id' field.
+      * @param value The value of 'category_id'.
+      * @return This builder.
+      */
+    public Builder setCategoryId(CharSequence value) {
       validate(fields()[2], value);
       this.category_id = value;
       fieldSetFlags()[2] = true;
@@ -394,39 +389,39 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     }
 
     /**
-     * Checks whether the 'category_id' field has been set.
-     * @return True if the 'category_id' field has been set, false otherwise.
-     */
+      * Checks whether the 'category_id' field has been set.
+      * @return True if the 'category_id' field has been set, false otherwise.
+      */
     public boolean hasCategoryId() {
       return fieldSetFlags()[2];
     }
 
 
     /**
-     * Clears the value of the 'category_id' field.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder clearCategoryId() {
+      * Clears the value of the 'category_id' field.
+      * @return This builder.
+      */
+    public Builder clearCategoryId() {
       category_id = null;
       fieldSetFlags()[2] = false;
       return this;
     }
 
     /**
-     * Gets the value of the 'price' field.
-     * @return The value.
-     */
+      * Gets the value of the 'price' field.
+      * @return The value.
+      */
     public int getPrice() {
       return price;
     }
 
 
     /**
-     * Sets the value of the 'price' field.
-     * @param value The value of 'price'.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder setPrice(int value) {
+      * Sets the value of the 'price' field.
+      * @param value The value of 'price'.
+      * @return This builder.
+      */
+    public Builder setPrice(int value) {
       validate(fields()[3], value);
       this.price = value;
       fieldSetFlags()[3] = true;
@@ -434,19 +429,19 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     }
 
     /**
-     * Checks whether the 'price' field has been set.
-     * @return True if the 'price' field has been set, false otherwise.
-     */
+      * Checks whether the 'price' field has been set.
+      * @return True if the 'price' field has been set, false otherwise.
+      */
     public boolean hasPrice() {
       return fieldSetFlags()[3];
     }
 
 
     /**
-     * Clears the value of the 'price' field.
-     * @return This builder.
-     */
-    public ks406362.generated.ProductInfo.Builder clearPrice() {
+      * Clears the value of the 'price' field.
+      * @return This builder.
+      */
+    public Builder clearPrice() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -456,14 +451,14 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     public ProductInfo build() {
       try {
         ProductInfo record = new ProductInfo();
-        record.product_id = fieldSetFlags()[0] ? this.product_id : (java.lang.Integer) defaultValue(fields()[0]);
-        record.brand_id = fieldSetFlags()[1] ? this.brand_id : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.category_id = fieldSetFlags()[2] ? this.category_id : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.price = fieldSetFlags()[3] ? this.price : (java.lang.Integer) defaultValue(fields()[3]);
+        record.product_id = fieldSetFlags()[0] ? this.product_id : (Integer) defaultValue(fields()[0]);
+        record.brand_id = fieldSetFlags()[1] ? this.brand_id : (CharSequence) defaultValue(fields()[1]);
+        record.category_id = fieldSetFlags()[2] ? this.category_id : (CharSequence) defaultValue(fields()[2]);
+        record.price = fieldSetFlags()[3] ? this.price : (Integer) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
-      } catch (java.lang.Exception e) {
+      } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
     }
@@ -471,26 +466,26 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
 
   @SuppressWarnings("unchecked")
   private static final org.apache.avro.io.DatumWriter<ProductInfo>
-          WRITER$ = (org.apache.avro.io.DatumWriter<ProductInfo>)MODEL$.createDatumWriter(SCHEMA$);
+    WRITER$ = (org.apache.avro.io.DatumWriter<ProductInfo>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
-          throws java.io.IOException {
+    throws java.io.IOException {
     WRITER$.write(this, SpecificData.getEncoder(out));
   }
 
   @SuppressWarnings("unchecked")
   private static final org.apache.avro.io.DatumReader<ProductInfo>
-          READER$ = (org.apache.avro.io.DatumReader<ProductInfo>)MODEL$.createDatumReader(SCHEMA$);
+    READER$ = (org.apache.avro.io.DatumReader<ProductInfo>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
-          throws java.io.IOException {
+    throws java.io.IOException {
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
   @Override protected boolean hasCustomCoders() { return true; }
 
   @Override public void customEncode(org.apache.avro.io.Encoder out)
-          throws java.io.IOException
+    throws java.io.IOException
   {
     out.writeInt(this.product_id);
 
@@ -503,7 +498,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-          throws java.io.IOException
+    throws java.io.IOException
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
@@ -518,24 +513,24 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
     } else {
       for (int i = 0; i < 4; i++) {
         switch (fieldOrder[i].pos()) {
-          case 0:
-            this.product_id = in.readInt();
-            break;
+        case 0:
+          this.product_id = in.readInt();
+          break;
 
-          case 1:
-            this.brand_id = in.readString(this.brand_id instanceof Utf8 ? (Utf8)this.brand_id : null);
-            break;
+        case 1:
+          this.brand_id = in.readString(this.brand_id instanceof Utf8 ? (Utf8)this.brand_id : null);
+          break;
 
-          case 2:
-            this.category_id = in.readString(this.category_id instanceof Utf8 ? (Utf8)this.category_id : null);
-            break;
+        case 2:
+          this.category_id = in.readString(this.category_id instanceof Utf8 ? (Utf8)this.category_id : null);
+          break;
 
-          case 3:
-            this.price = in.readInt();
-            break;
+        case 3:
+          this.price = in.readInt();
+          break;
 
-          default:
-            throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
         }
       }
     }

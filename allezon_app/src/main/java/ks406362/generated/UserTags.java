@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class UserTags extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8914301631177668710L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserTags\",\"namespace\":\"ks406362.generated\",\"fields\":[{\"name\":\"cookie\",\"type\":\"string\"},{\"name\":\"buys\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"UserTag\",\"fields\":[{\"name\":\"time\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"device\",\"type\":{\"type\":\"enum\",\"name\":\"device_enum\",\"symbols\":[\"PC\",\"MOBILE\",\"TV\"]}},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"product_info\",\"type\":{\"type\":\"record\",\"name\":\"ProductInfo\",\"fields\":[{\"name\":\"product_id\",\"type\":\"string\"},{\"name\":\"brand_id\",\"type\":\"string\"},{\"name\":\"category_id\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"int\"}]}}]}}},{\"name\":\"views\",\"type\":{\"type\":\"array\",\"items\":\"UserTag\"}}]}");
+  private static final long serialVersionUID = -6024358249293821746L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserTags\",\"namespace\":\"ks406362.generated\",\"fields\":[{\"name\":\"cookie\",\"type\":\"string\"},{\"name\":\"buys\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"UserTag\",\"fields\":[{\"name\":\"time\",\"type\":\"string\"},{\"name\":\"country\",\"type\":\"string\"},{\"name\":\"device\",\"type\":{\"type\":\"enum\",\"name\":\"device_enum\",\"symbols\":[\"PC\",\"MOBILE\",\"TV\"]}},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"product_info\",\"type\":{\"type\":\"record\",\"name\":\"ProductInfo\",\"fields\":[{\"name\":\"product_id\",\"type\":\"int\"},{\"name\":\"brand_id\",\"type\":\"string\"},{\"name\":\"category_id\",\"type\":\"string\"},{\"name\":\"price\",\"type\":\"int\"}]}}]}}},{\"name\":\"views\",\"type\":{\"type\":\"array\",\"items\":\"UserTag\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -72,8 +72,8 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   @Deprecated public CharSequence cookie;
-  @Deprecated public java.util.List<ks406362.generated.UserTag> buys;
-  @Deprecated public java.util.List<ks406362.generated.UserTag> views;
+  @Deprecated public java.util.List<UserTag> buys;
+  @Deprecated public java.util.List<UserTag> views;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -88,7 +88,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * @param buys The new value for buys
    * @param views The new value for views
    */
-  public UserTags(CharSequence cookie, java.util.List<ks406362.generated.UserTag> buys, java.util.List<ks406362.generated.UserTag> views) {
+  public UserTags(CharSequence cookie, java.util.List<UserTag> buys, java.util.List<UserTag> views) {
     this.cookie = cookie;
     this.buys = buys;
     this.views = views;
@@ -111,8 +111,8 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
   public void put(int field$, Object value$) {
     switch (field$) {
     case 0: cookie = (CharSequence)value$; break;
-    case 1: buys = (java.util.List<ks406362.generated.UserTag>)value$; break;
-    case 2: views = (java.util.List<ks406362.generated.UserTag>)value$; break;
+    case 1: buys = (java.util.List<UserTag>)value$; break;
+    case 2: views = (java.util.List<UserTag>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -138,7 +138,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'buys' field.
    * @return The value of the 'buys' field.
    */
-  public java.util.List<ks406362.generated.UserTag> getBuys() {
+  public java.util.List<UserTag> getBuys() {
     return buys;
   }
 
@@ -147,7 +147,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'buys' field.
    * @param value the value to set.
    */
-  public void setBuys(java.util.List<ks406362.generated.UserTag> value) {
+  public void setBuys(java.util.List<UserTag> value) {
     this.buys = value;
   }
 
@@ -155,7 +155,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'views' field.
    * @return The value of the 'views' field.
    */
-  public java.util.List<ks406362.generated.UserTag> getViews() {
+  public java.util.List<UserTag> getViews() {
     return views;
   }
 
@@ -164,7 +164,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'views' field.
    * @param value the value to set.
    */
-  public void setViews(java.util.List<ks406362.generated.UserTag> value) {
+  public void setViews(java.util.List<UserTag> value) {
     this.views = value;
   }
 
@@ -172,8 +172,8 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * Creates a new UserTags RecordBuilder.
    * @return A new UserTags RecordBuilder
    */
-  public static ks406362.generated.UserTags.Builder newBuilder() {
-    return new ks406362.generated.UserTags.Builder();
+  public static Builder newBuilder() {
+    return new Builder();
   }
 
   /**
@@ -181,11 +181,11 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing builder to copy.
    * @return A new UserTags RecordBuilder
    */
-  public static ks406362.generated.UserTags.Builder newBuilder(ks406362.generated.UserTags.Builder other) {
+  public static Builder newBuilder(Builder other) {
     if (other == null) {
-      return new ks406362.generated.UserTags.Builder();
+      return new Builder();
     } else {
-      return new ks406362.generated.UserTags.Builder(other);
+      return new Builder(other);
     }
   }
 
@@ -194,11 +194,11 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing instance to copy.
    * @return A new UserTags RecordBuilder
    */
-  public static ks406362.generated.UserTags.Builder newBuilder(ks406362.generated.UserTags other) {
+  public static Builder newBuilder(UserTags other) {
     if (other == null) {
-      return new ks406362.generated.UserTags.Builder();
+      return new Builder();
     } else {
-      return new ks406362.generated.UserTags.Builder(other);
+      return new Builder(other);
     }
   }
 
@@ -209,8 +209,8 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
     implements org.apache.avro.data.RecordBuilder<UserTags> {
 
     private CharSequence cookie;
-    private java.util.List<ks406362.generated.UserTag> buys;
-    private java.util.List<ks406362.generated.UserTag> views;
+    private java.util.List<UserTag> buys;
+    private java.util.List<UserTag> views;
 
     /** Creates a new Builder */
     private Builder() {
@@ -221,7 +221,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(ks406362.generated.UserTags.Builder other) {
+    private Builder(Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.cookie)) {
         this.cookie = data().deepCopy(fields()[0].schema(), other.cookie);
@@ -241,7 +241,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing UserTags instance
      * @param other The existing instance to copy.
      */
-    private Builder(ks406362.generated.UserTags other) {
+    private Builder(UserTags other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.cookie)) {
         this.cookie = data().deepCopy(fields()[0].schema(), other.cookie);
@@ -271,7 +271,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'cookie'.
       * @return This builder.
       */
-    public ks406362.generated.UserTags.Builder setCookie(CharSequence value) {
+    public Builder setCookie(CharSequence value) {
       validate(fields()[0], value);
       this.cookie = value;
       fieldSetFlags()[0] = true;
@@ -291,7 +291,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'cookie' field.
       * @return This builder.
       */
-    public ks406362.generated.UserTags.Builder clearCookie() {
+    public Builder clearCookie() {
       cookie = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -301,7 +301,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * Gets the value of the 'buys' field.
       * @return The value.
       */
-    public java.util.List<ks406362.generated.UserTag> getBuys() {
+    public java.util.List<UserTag> getBuys() {
       return buys;
     }
 
@@ -311,7 +311,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'buys'.
       * @return This builder.
       */
-    public ks406362.generated.UserTags.Builder setBuys(java.util.List<ks406362.generated.UserTag> value) {
+    public Builder setBuys(java.util.List<UserTag> value) {
       validate(fields()[1], value);
       this.buys = value;
       fieldSetFlags()[1] = true;
@@ -331,7 +331,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'buys' field.
       * @return This builder.
       */
-    public ks406362.generated.UserTags.Builder clearBuys() {
+    public Builder clearBuys() {
       buys = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -341,7 +341,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * Gets the value of the 'views' field.
       * @return The value.
       */
-    public java.util.List<ks406362.generated.UserTag> getViews() {
+    public java.util.List<UserTag> getViews() {
       return views;
     }
 
@@ -351,7 +351,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'views'.
       * @return This builder.
       */
-    public ks406362.generated.UserTags.Builder setViews(java.util.List<ks406362.generated.UserTag> value) {
+    public Builder setViews(java.util.List<UserTag> value) {
       validate(fields()[2], value);
       this.views = value;
       fieldSetFlags()[2] = true;
@@ -371,7 +371,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'views' field.
       * @return This builder.
       */
-    public ks406362.generated.UserTags.Builder clearViews() {
+    public Builder clearViews() {
       views = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -383,8 +383,8 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       try {
         UserTags record = new UserTags();
         record.cookie = fieldSetFlags()[0] ? this.cookie : (CharSequence) defaultValue(fields()[0]);
-        record.buys = fieldSetFlags()[1] ? this.buys : (java.util.List<ks406362.generated.UserTag>) defaultValue(fields()[1]);
-        record.views = fieldSetFlags()[2] ? this.views : (java.util.List<ks406362.generated.UserTag>) defaultValue(fields()[2]);
+        record.buys = fieldSetFlags()[1] ? this.buys : (java.util.List<UserTag>) defaultValue(fields()[1]);
+        record.views = fieldSetFlags()[2] ? this.views : (java.util.List<UserTag>) defaultValue(fields()[2]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -423,7 +423,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
     out.writeArrayStart();
     out.setItemCount(size0);
     long actualSize0 = 0;
-    for (ks406362.generated.UserTag e0: this.buys) {
+    for (UserTag e0: this.buys) {
       actualSize0++;
       out.startItem();
       e0.customEncode(out);
@@ -436,7 +436,7 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
     out.writeArrayStart();
     out.setItemCount(size1);
     long actualSize1 = 0;
-    for (ks406362.generated.UserTag e1: this.views) {
+    for (UserTag e1: this.views) {
       actualSize1++;
       out.startItem();
       e1.customEncode(out);
@@ -455,17 +455,17 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       this.cookie = in.readString(this.cookie instanceof Utf8 ? (Utf8)this.cookie : null);
 
       long size0 = in.readArrayStart();
-      java.util.List<ks406362.generated.UserTag> a0 = this.buys;
+      java.util.List<UserTag> a0 = this.buys;
       if (a0 == null) {
-        a0 = new SpecificData.Array<ks406362.generated.UserTag>((int)size0, SCHEMA$.getField("buys").schema());
+        a0 = new SpecificData.Array<UserTag>((int)size0, SCHEMA$.getField("buys").schema());
         this.buys = a0;
       } else a0.clear();
-      SpecificData.Array<ks406362.generated.UserTag> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<ks406362.generated.UserTag>)a0 : null);
+      SpecificData.Array<UserTag> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<UserTag>)a0 : null);
       for ( ; 0 < size0; size0 = in.arrayNext()) {
         for ( ; size0 != 0; size0--) {
-          ks406362.generated.UserTag e0 = (ga0 != null ? ga0.peek() : null);
+          UserTag e0 = (ga0 != null ? ga0.peek() : null);
           if (e0 == null) {
-            e0 = new ks406362.generated.UserTag();
+            e0 = new UserTag();
           }
           e0.customDecode(in);
           a0.add(e0);
@@ -473,17 +473,17 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
       }
 
       long size1 = in.readArrayStart();
-      java.util.List<ks406362.generated.UserTag> a1 = this.views;
+      java.util.List<UserTag> a1 = this.views;
       if (a1 == null) {
-        a1 = new SpecificData.Array<ks406362.generated.UserTag>((int)size1, SCHEMA$.getField("views").schema());
+        a1 = new SpecificData.Array<UserTag>((int)size1, SCHEMA$.getField("views").schema());
         this.views = a1;
       } else a1.clear();
-      SpecificData.Array<ks406362.generated.UserTag> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<ks406362.generated.UserTag>)a1 : null);
+      SpecificData.Array<UserTag> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<UserTag>)a1 : null);
       for ( ; 0 < size1; size1 = in.arrayNext()) {
         for ( ; size1 != 0; size1--) {
-          ks406362.generated.UserTag e1 = (ga1 != null ? ga1.peek() : null);
+          UserTag e1 = (ga1 != null ? ga1.peek() : null);
           if (e1 == null) {
-            e1 = new ks406362.generated.UserTag();
+            e1 = new UserTag();
           }
           e1.customDecode(in);
           a1.add(e1);
@@ -499,17 +499,17 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
 
         case 1:
           long size0 = in.readArrayStart();
-          java.util.List<ks406362.generated.UserTag> a0 = this.buys;
+          java.util.List<UserTag> a0 = this.buys;
           if (a0 == null) {
-            a0 = new SpecificData.Array<ks406362.generated.UserTag>((int)size0, SCHEMA$.getField("buys").schema());
+            a0 = new SpecificData.Array<UserTag>((int)size0, SCHEMA$.getField("buys").schema());
             this.buys = a0;
           } else a0.clear();
-          SpecificData.Array<ks406362.generated.UserTag> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<ks406362.generated.UserTag>)a0 : null);
+          SpecificData.Array<UserTag> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<UserTag>)a0 : null);
           for ( ; 0 < size0; size0 = in.arrayNext()) {
             for ( ; size0 != 0; size0--) {
-              ks406362.generated.UserTag e0 = (ga0 != null ? ga0.peek() : null);
+              UserTag e0 = (ga0 != null ? ga0.peek() : null);
               if (e0 == null) {
-                e0 = new ks406362.generated.UserTag();
+                e0 = new UserTag();
               }
               e0.customDecode(in);
               a0.add(e0);
@@ -519,17 +519,17 @@ public class UserTags extends org.apache.avro.specific.SpecificRecordBase implem
 
         case 2:
           long size1 = in.readArrayStart();
-          java.util.List<ks406362.generated.UserTag> a1 = this.views;
+          java.util.List<UserTag> a1 = this.views;
           if (a1 == null) {
-            a1 = new SpecificData.Array<ks406362.generated.UserTag>((int)size1, SCHEMA$.getField("views").schema());
+            a1 = new SpecificData.Array<UserTag>((int)size1, SCHEMA$.getField("views").schema());
             this.views = a1;
           } else a1.clear();
-          SpecificData.Array<ks406362.generated.UserTag> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<ks406362.generated.UserTag>)a1 : null);
+          SpecificData.Array<UserTag> ga1 = (a1 instanceof SpecificData.Array ? (SpecificData.Array<UserTag>)a1 : null);
           for ( ; 0 < size1; size1 = in.arrayNext()) {
             for ( ; size1 != 0; size1--) {
-              ks406362.generated.UserTag e1 = (ga1 != null ? ga1.peek() : null);
+              UserTag e1 = (ga1 != null ? ga1.peek() : null);
               if (e1 == null) {
-                e1 = new ks406362.generated.UserTag();
+                e1 = new UserTag();
               }
               e1.customDecode(in);
               a1.add(e1);
