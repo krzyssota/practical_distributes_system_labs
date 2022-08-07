@@ -1,5 +1,5 @@
 [
-  {"namespace": "com.rtbhouse.nosqllab",
+  {"namespace": "ks406362",
     "type": "record",
     "name": "ProductInfo",
     "fields": [
@@ -9,7 +9,7 @@
         {"name": "price", "type": "int"}
     ]
   },
-  {"namespace": "com.rtbhouse.nosqllab",
+  {"namespace": "ks406362",
     "type": "record",
     "name": "UserTag",
     "fields": [
@@ -20,7 +20,7 @@
       {"name": "product_info", "type": "ProductInfo"}
     ]
   },
-  {"namespace": "com.rtbhouse.nosqllab",
+  {"namespace": "ks406362",
     "type": "record",
     "name": "UserTags",
     "fields": [
