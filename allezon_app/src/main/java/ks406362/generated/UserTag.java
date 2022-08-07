@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package ks406362;
+package ks406362.generated;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -71,11 +71,11 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
     return DECODER.decode(b);
   }
 
-  @Deprecated public java.lang.CharSequence time;
-  @Deprecated public java.lang.CharSequence country;
-  @Deprecated public ks406362.device_enum device;
-  @Deprecated public java.lang.CharSequence origin;
-  @Deprecated public ks406362.ProductInfo product_info;
+  @Deprecated public CharSequence time;
+  @Deprecated public CharSequence country;
+  @Deprecated public ks406362.generated.device_enum device;
+  @Deprecated public CharSequence origin;
+  @Deprecated public ks406362.generated.ProductInfo product_info;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -92,7 +92,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param origin The new value for origin
    * @param product_info The new value for product_info
    */
-  public UserTag(java.lang.CharSequence time, java.lang.CharSequence country, ks406362.device_enum device, java.lang.CharSequence origin, ks406362.ProductInfo product_info) {
+  public UserTag(CharSequence time, CharSequence country, ks406362.generated.device_enum device, CharSequence origin, ks406362.generated.ProductInfo product_info) {
     this.time = time;
     this.country = country;
     this.device = device;
@@ -100,10 +100,10 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
     this.product_info = product_info;
   }
 
-  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+  public SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
-  public java.lang.Object get(int field$) {
+  public Object get(int field$) {
     switch (field$) {
     case 0: return time;
     case 1: return country;
@@ -116,13 +116,13 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
 
   // Used by DatumReader.  Applications should not call.
   @SuppressWarnings(value="unchecked")
-  public void put(int field$, java.lang.Object value$) {
+  public void put(int field$, Object value$) {
     switch (field$) {
-    case 0: time = (java.lang.CharSequence)value$; break;
-    case 1: country = (java.lang.CharSequence)value$; break;
-    case 2: device = (ks406362.device_enum)value$; break;
-    case 3: origin = (java.lang.CharSequence)value$; break;
-    case 4: product_info = (ks406362.ProductInfo)value$; break;
+    case 0: time = (CharSequence)value$; break;
+    case 1: country = (CharSequence)value$; break;
+    case 2: device = (ks406362.generated.device_enum)value$; break;
+    case 3: origin = (CharSequence)value$; break;
+    case 4: product_info = (ks406362.generated.ProductInfo)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -131,7 +131,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'time' field.
    * @return The value of the 'time' field.
    */
-  public java.lang.CharSequence getTime() {
+  public CharSequence getTime() {
     return time;
   }
 
@@ -140,7 +140,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'time' field.
    * @param value the value to set.
    */
-  public void setTime(java.lang.CharSequence value) {
+  public void setTime(CharSequence value) {
     this.time = value;
   }
 
@@ -148,7 +148,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'country' field.
    * @return The value of the 'country' field.
    */
-  public java.lang.CharSequence getCountry() {
+  public CharSequence getCountry() {
     return country;
   }
 
@@ -157,7 +157,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'country' field.
    * @param value the value to set.
    */
-  public void setCountry(java.lang.CharSequence value) {
+  public void setCountry(CharSequence value) {
     this.country = value;
   }
 
@@ -165,7 +165,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'device' field.
    * @return The value of the 'device' field.
    */
-  public ks406362.device_enum getDevice() {
+  public ks406362.generated.device_enum getDevice() {
     return device;
   }
 
@@ -174,7 +174,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'device' field.
    * @param value the value to set.
    */
-  public void setDevice(ks406362.device_enum value) {
+  public void setDevice(ks406362.generated.device_enum value) {
     this.device = value;
   }
 
@@ -182,7 +182,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'origin' field.
    * @return The value of the 'origin' field.
    */
-  public java.lang.CharSequence getOrigin() {
+  public CharSequence getOrigin() {
     return origin;
   }
 
@@ -191,7 +191,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'origin' field.
    * @param value the value to set.
    */
-  public void setOrigin(java.lang.CharSequence value) {
+  public void setOrigin(CharSequence value) {
     this.origin = value;
   }
 
@@ -199,7 +199,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Gets the value of the 'product_info' field.
    * @return The value of the 'product_info' field.
    */
-  public ks406362.ProductInfo getProductInfo() {
+  public ks406362.generated.ProductInfo getProductInfo() {
     return product_info;
   }
 
@@ -208,7 +208,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Sets the value of the 'product_info' field.
    * @param value the value to set.
    */
-  public void setProductInfo(ks406362.ProductInfo value) {
+  public void setProductInfo(ks406362.generated.ProductInfo value) {
     this.product_info = value;
   }
 
@@ -216,8 +216,8 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * Creates a new UserTag RecordBuilder.
    * @return A new UserTag RecordBuilder
    */
-  public static ks406362.UserTag.Builder newBuilder() {
-    return new ks406362.UserTag.Builder();
+  public static ks406362.generated.UserTag.Builder newBuilder() {
+    return new ks406362.generated.UserTag.Builder();
   }
 
   /**
@@ -225,11 +225,11 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param other The existing builder to copy.
    * @return A new UserTag RecordBuilder
    */
-  public static ks406362.UserTag.Builder newBuilder(ks406362.UserTag.Builder other) {
+  public static ks406362.generated.UserTag.Builder newBuilder(ks406362.generated.UserTag.Builder other) {
     if (other == null) {
-      return new ks406362.UserTag.Builder();
+      return new ks406362.generated.UserTag.Builder();
     } else {
-      return new ks406362.UserTag.Builder(other);
+      return new ks406362.generated.UserTag.Builder(other);
     }
   }
 
@@ -238,11 +238,11 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
    * @param other The existing instance to copy.
    * @return A new UserTag RecordBuilder
    */
-  public static ks406362.UserTag.Builder newBuilder(ks406362.UserTag other) {
+  public static ks406362.generated.UserTag.Builder newBuilder(ks406362.generated.UserTag other) {
     if (other == null) {
-      return new ks406362.UserTag.Builder();
+      return new ks406362.generated.UserTag.Builder();
     } else {
-      return new ks406362.UserTag.Builder(other);
+      return new ks406362.generated.UserTag.Builder(other);
     }
   }
 
@@ -252,12 +252,12 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<UserTag>
     implements org.apache.avro.data.RecordBuilder<UserTag> {
 
-    private java.lang.CharSequence time;
-    private java.lang.CharSequence country;
-    private ks406362.device_enum device;
-    private java.lang.CharSequence origin;
-    private ks406362.ProductInfo product_info;
-    private ks406362.ProductInfo.Builder product_infoBuilder;
+    private CharSequence time;
+    private CharSequence country;
+    private ks406362.generated.device_enum device;
+    private CharSequence origin;
+    private ks406362.generated.ProductInfo product_info;
+    private ks406362.generated.ProductInfo.Builder product_infoBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -268,7 +268,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(ks406362.UserTag.Builder other) {
+    private Builder(ks406362.generated.UserTag.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.time)) {
         this.time = data().deepCopy(fields()[0].schema(), other.time);
@@ -291,7 +291,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
       if (other.hasProductInfoBuilder()) {
-        this.product_infoBuilder = ks406362.ProductInfo.newBuilder(other.getProductInfoBuilder());
+        this.product_infoBuilder = ks406362.generated.ProductInfo.newBuilder(other.getProductInfoBuilder());
       }
     }
 
@@ -299,7 +299,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
      * Creates a Builder by copying an existing UserTag instance
      * @param other The existing instance to copy.
      */
-    private Builder(ks406362.UserTag other) {
+    private Builder(ks406362.generated.UserTag other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.time)) {
         this.time = data().deepCopy(fields()[0].schema(), other.time);
@@ -328,7 +328,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Gets the value of the 'time' field.
       * @return The value.
       */
-    public java.lang.CharSequence getTime() {
+    public CharSequence getTime() {
       return time;
     }
 
@@ -338,7 +338,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'time'.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder setTime(java.lang.CharSequence value) {
+    public ks406362.generated.UserTag.Builder setTime(CharSequence value) {
       validate(fields()[0], value);
       this.time = value;
       fieldSetFlags()[0] = true;
@@ -358,7 +358,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'time' field.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder clearTime() {
+    public ks406362.generated.UserTag.Builder clearTime() {
       time = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -368,7 +368,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Gets the value of the 'country' field.
       * @return The value.
       */
-    public java.lang.CharSequence getCountry() {
+    public CharSequence getCountry() {
       return country;
     }
 
@@ -378,7 +378,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'country'.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder setCountry(java.lang.CharSequence value) {
+    public ks406362.generated.UserTag.Builder setCountry(CharSequence value) {
       validate(fields()[1], value);
       this.country = value;
       fieldSetFlags()[1] = true;
@@ -398,7 +398,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'country' field.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder clearCountry() {
+    public ks406362.generated.UserTag.Builder clearCountry() {
       country = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -408,7 +408,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Gets the value of the 'device' field.
       * @return The value.
       */
-    public ks406362.device_enum getDevice() {
+    public ks406362.generated.device_enum getDevice() {
       return device;
     }
 
@@ -418,7 +418,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'device'.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder setDevice(ks406362.device_enum value) {
+    public ks406362.generated.UserTag.Builder setDevice(ks406362.generated.device_enum value) {
       validate(fields()[2], value);
       this.device = value;
       fieldSetFlags()[2] = true;
@@ -438,7 +438,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'device' field.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder clearDevice() {
+    public ks406362.generated.UserTag.Builder clearDevice() {
       device = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -448,7 +448,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Gets the value of the 'origin' field.
       * @return The value.
       */
-    public java.lang.CharSequence getOrigin() {
+    public CharSequence getOrigin() {
       return origin;
     }
 
@@ -458,7 +458,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'origin'.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder setOrigin(java.lang.CharSequence value) {
+    public ks406362.generated.UserTag.Builder setOrigin(CharSequence value) {
       validate(fields()[3], value);
       this.origin = value;
       fieldSetFlags()[3] = true;
@@ -478,7 +478,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'origin' field.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder clearOrigin() {
+    public ks406362.generated.UserTag.Builder clearOrigin() {
       origin = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -488,7 +488,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Gets the value of the 'product_info' field.
       * @return The value.
       */
-    public ks406362.ProductInfo getProductInfo() {
+    public ks406362.generated.ProductInfo getProductInfo() {
       return product_info;
     }
 
@@ -498,7 +498,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * @param value The value of 'product_info'.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder setProductInfo(ks406362.ProductInfo value) {
+    public ks406362.generated.UserTag.Builder setProductInfo(ks406362.generated.ProductInfo value) {
       validate(fields()[4], value);
       this.product_infoBuilder = null;
       this.product_info = value;
@@ -518,12 +518,12 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
      * Gets the Builder instance for the 'product_info' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public ks406362.ProductInfo.Builder getProductInfoBuilder() {
+    public ks406362.generated.ProductInfo.Builder getProductInfoBuilder() {
       if (product_infoBuilder == null) {
         if (hasProductInfo()) {
-          setProductInfoBuilder(ks406362.ProductInfo.newBuilder(product_info));
+          setProductInfoBuilder(ks406362.generated.ProductInfo.newBuilder(product_info));
         } else {
-          setProductInfoBuilder(ks406362.ProductInfo.newBuilder());
+          setProductInfoBuilder(ks406362.generated.ProductInfo.newBuilder());
         }
       }
       return product_infoBuilder;
@@ -534,7 +534,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public ks406362.UserTag.Builder setProductInfoBuilder(ks406362.ProductInfo.Builder value) {
+    public ks406362.generated.UserTag.Builder setProductInfoBuilder(ks406362.generated.ProductInfo.Builder value) {
       clearProductInfo();
       product_infoBuilder = value;
       return this;
@@ -552,7 +552,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
       * Clears the value of the 'product_info' field.
       * @return This builder.
       */
-    public ks406362.UserTag.Builder clearProductInfo() {
+    public ks406362.generated.UserTag.Builder clearProductInfo() {
       product_info = null;
       product_infoBuilder = null;
       fieldSetFlags()[4] = false;
@@ -564,10 +564,10 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
     public UserTag build() {
       try {
         UserTag record = new UserTag();
-        record.time = fieldSetFlags()[0] ? this.time : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.country = fieldSetFlags()[1] ? this.country : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.device = fieldSetFlags()[2] ? this.device : (ks406362.device_enum) defaultValue(fields()[2]);
-        record.origin = fieldSetFlags()[3] ? this.origin : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.time = fieldSetFlags()[0] ? this.time : (CharSequence) defaultValue(fields()[0]);
+        record.country = fieldSetFlags()[1] ? this.country : (CharSequence) defaultValue(fields()[1]);
+        record.device = fieldSetFlags()[2] ? this.device : (ks406362.generated.device_enum) defaultValue(fields()[2]);
+        record.origin = fieldSetFlags()[3] ? this.origin : (CharSequence) defaultValue(fields()[3]);
         if (product_infoBuilder != null) {
           try {
             record.product_info = this.product_infoBuilder.build();
@@ -576,12 +576,12 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
             throw e;
           }
         } else {
-          record.product_info = fieldSetFlags()[4] ? this.product_info : (ks406362.ProductInfo) defaultValue(fields()[4]);
+          record.product_info = fieldSetFlags()[4] ? this.product_info : (ks406362.generated.ProductInfo) defaultValue(fields()[4]);
         }
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
-      } catch (java.lang.Exception e) {
+      } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
     }
@@ -631,12 +631,12 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
 
       this.country = in.readString(this.country instanceof Utf8 ? (Utf8)this.country : null);
 
-      this.device = ks406362.device_enum.values()[in.readEnum()];
+      this.device = ks406362.generated.device_enum.values()[in.readEnum()];
 
       this.origin = in.readString(this.origin instanceof Utf8 ? (Utf8)this.origin : null);
 
       if (this.product_info == null) {
-        this.product_info = new ks406362.ProductInfo();
+        this.product_info = new ks406362.generated.ProductInfo();
       }
       this.product_info.customDecode(in);
 
@@ -652,7 +652,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
           break;
 
         case 2:
-          this.device = ks406362.device_enum.values()[in.readEnum()];
+          this.device = ks406362.generated.device_enum.values()[in.readEnum()];
           break;
 
         case 3:
@@ -661,7 +661,7 @@ public class UserTag extends org.apache.avro.specific.SpecificRecordBase impleme
 
         case 4:
           if (this.product_info == null) {
-            this.product_info = new ks406362.ProductInfo();
+            this.product_info = new ks406362.generated.ProductInfo();
           }
           this.product_info.customDecode(in);
           break;

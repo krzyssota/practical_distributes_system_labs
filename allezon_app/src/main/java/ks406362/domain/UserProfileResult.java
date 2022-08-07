@@ -1,6 +1,6 @@
 package ks406362.domain;
 
-import ks406362.UserTags;
+import ks406362.generated.UserTags;
 
 import java.util.List;
 

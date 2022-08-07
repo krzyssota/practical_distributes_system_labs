@@ -1,6 +1,6 @@
 package ks406362.domain;
 
-import ks406362.device_enum;
+import ks406362.generated.device_enum;
 
 public enum Device {
     MOBILE, PC, TV;
