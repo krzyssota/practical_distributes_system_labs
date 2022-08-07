@@ -95,6 +95,9 @@ public class Client {
         UserTag userTag = new UserTag(t, c, d.getGeneratedDeviceEnumFromDevice(), o, p.getGeneratedProductInfoFromProduct());
         this.userTagDao.append(userTagEvent.cookie(), userTagEvent.action(), userTag);
 
+
+
+
         return ResponseEntity.noContent().build();
     }
 
