@@ -1,7 +1,7 @@
 package ks406362.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ks406362.generated.ProductInfo;
+import ks406362.ProductInfo;
 
 public record Product(@JsonProperty("product_id") int productId,
                       @JsonProperty("brand_id") String brandId,
