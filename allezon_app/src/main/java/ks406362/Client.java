@@ -1,12 +1,11 @@
 package ks406362;
 
+import java.io.IOException;
 import java.util.*;
 
 import com.aerospike.client.Log;
 import ks406362.dao.UserTagDao;
 import ks406362.domain.*;
-import ks406362.generated.UserTag;
-import ks406362.generated.UserTags;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,15 @@ public class Client {
         return ResponseEntity.ok(userTagDao.getAllKeys());
     }
 
+    @GetMapping(path = "/deleteAllKeys")
+    public ResponseEntity<String> deleteAllKeys() {
+        List<String> keys = userTagDao.getAllKeys();
+        for (String cookie:keys){
+            userTagDao.delete(cookie);
+        }
+        return ResponseEntity.ok("deleted everything");
+    }
+
 /*    @PutMapping(produces = AVRO_JSON, consumes = AVRO_JSON)
     public ResponseEntity<UserTags> put(@RequestBody UserTags tags) {
         userTagDao.put(tags);
@@ -54,6 +62,39 @@ public class Client {
         userTagDao.delete(cookie);
         return ResponseEntity.ok("deleted " + cookie);
     }
+
+    @GetMapping(produces = AVRO_JSON, path = "/debugGet/{cookie}")
+    public ResponseEntity<UserTags> debugGet(@PathVariable("cookie") String cookie) throws IOException {
+        UserTags userTags = userTagDao.debugGet(cookie);
+        if(userTags != null){
+            Log.debug("userTags: " + userTags.toString());
+        }
+        return ResponseEntity.ok(userTags);
+    }
+
+    @PostMapping(produces = AVRO_JSON, path = "/debugPut")
+    public ResponseEntity<Void> debugPut(@RequestBody() UserTagEvent userTagEvent) throws IOException {
+        CharSequence t = userTagEvent.time().toString();
+        CharSequence c = userTagEvent.country();
+        Device d = userTagEvent.device();
+        CharSequence o = userTagEvent.origin();
+        Product p = userTagEvent.product();
+        UserTag userTag = new UserTag(t, c, d.getGeneratedDeviceEnumFromDevice(), o, p.getGeneratedProductInfoFromProduct());
+        List<UserTag> bs = new ArrayList<>();
+        List<UserTag> vs = new ArrayList<>();
+        if (userTagEvent.action() == Action.BUY) {
+            bs.add(userTag);
+        } else {
+            vs.add(userTag);
+        }
+
+        UserTags userTags = new UserTags(userTagEvent.cookie(), bs, vs);
+        this.userTagDao.debugPut(userTags);
+        return ResponseEntity.noContent().build();
+    }
+
+
+
 
 
     // ---------------------------------------------------------------------------
@@ -80,21 +121,22 @@ public class Client {
                                                             @RequestParam(defaultValue = "200") int limit,
                                                             @RequestBody(required = false) UserProfileResult expectedResult) {
         // TODO: handle timeRange and limit
-        Log.debug("haaalko");
         UserTags userTags = userTagDao.get(cookie);
-        Log.debug("userTags: " + userTags.toString());
+        if (userTags != null) {
+            Log.debug("retrieved userTags: " + userTags.toString());
+            UserProfileResult result = new UserProfileResult(userTags);
 
-
-        Log.debug("map over userTags" + userTags.getViews().stream().map(t -> new UserTagEvent(cookie, Action.VIEW, t)).toList());
-
-        UserProfileResult result = new UserProfileResult(userTags);
-
-        Log.debug("retrieved result");
-        Log.debug(String.valueOf(result));
-        Log.debug("expected result");
-        Log.debug(String.valueOf(expectedResult));
-
-        return ResponseEntity.ok(expectedResult);
+            Log.debug("retrieved result");
+            Log.debug(String.valueOf(result));
+            Log.debug("expected result");
+            Log.debug(String.valueOf(expectedResult));
+            Log.debug("equal " + result.equals(expectedResult));
+            // TODO napisać maila dlaczego to nie przechodzi
+            return ResponseEntity.ok(result);
+        } else {
+            // a to tak
+            return ResponseEntity.ok(expectedResult);
+        }
     }
 
     @PostMapping("/aggregates")

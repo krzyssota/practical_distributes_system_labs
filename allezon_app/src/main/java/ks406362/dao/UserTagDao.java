@@ -1,32 +1,36 @@
 package ks406362.dao;
 
-import com.aerospike.client.*;
 import com.aerospike.client.Record;
-import com.aerospike.client.lua.LuaConfig;
+import com.aerospike.client.*;
 import com.aerospike.client.policy.*;
-import com.aerospike.client.query.ResultSet;
-import com.aerospike.client.query.Statement;
-import com.aerospike.client.task.RegisterTask;
-import ks406362.domain.Action;
-import ks406362.generated.UserTag;
-import ks406362.generated.UserTags;
+import com.google.gson.reflect.TypeToken;
+import ks406362.UserTag;
+import ks406362.UserTags;
 import ks406362.avro.SerDe;
+import ks406362.domain.Action;
 import ks406362.schema.SchemaVersion;
 import org.apache.avro.Schema;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.schema.registry.client.SchemaRegistryClient;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
+import com.google.gson.Gson;
+import org.xerial.snappy.Snappy;
 
 @Component
 public class UserTagDao {
@@ -36,10 +40,12 @@ public class UserTagDao {
     private static final String TAGS_BIN = "tag";
     private static final String VERSION_BIN = "version";
     private static final int MAX_TAGS_LEN = 200;
+    private static final Gson GSON = new Gson();
 
     private AerospikeClient client;
     private SerDe<UserTags> serde;
     private SerDe<UserTag> serdeTag;
+
 
     @Autowired
     private SchemaVersion schemaVersion;
@@ -76,8 +82,38 @@ public class UserTagDao {
         task.waitTillComplete(1000, 10000);
     }*/
 
-    public void put(UserTags tags, WritePolicy writePolicy) {
+    public UserTags debugGet(String cookie) throws IOException {
+        Policy readPolicy = new Policy(client.readPolicyDefault);
+        Key key = new Key(NAMESPACE, SET, cookie);
+        Record record = client.get(readPolicy, key, VERSION_BIN, TAGS_BIN);
+        if (record == null) {
+            return null;
+        }
+        return GSON.fromJson((String) record.getValue(TAGS_BIN), UserTags.class);
+        //Type userTagsType = new TypeToken<UserTags>() {}.getType();
+        //String s = (String) record.getValue(TAGS_BIN);
+        //return GSON.fromJson(s, userTagsType);
+        //return GSON.fromJson(new String(Snappy.uncompress((byte []) record.getValue(TAGS_BIN)), StandardCharsets.UTF_8), UserTags.class);
+    }
 
+    public void debugPut(UserTags tags) throws IOException {
+        WritePolicy writePolicy = new WritePolicy(client.writePolicyDefault);
+        writePolicy.sendKey = true;
+        Key key = new Key(NAMESPACE, SET, String.valueOf(tags.getCookie()));
+        Bin versionBin = new Bin(VERSION_BIN, schemaVersion.getCurrentSchemaVersion());
+        String s = GSON.toJson(String.valueOf(tags));
+        String s2 = removeQuotesAndUnescape(s);
+        Log.info("serialized tags unclean: " + s + "\nserialized tags clean: " + s2);
+        Bin messageBin = new Bin(TAGS_BIN, s2);
+        client.put(writePolicy, key, versionBin, messageBin);
+    }
+
+    private String removeQuotesAndUnescape(String uncleanJson) {
+        String noQuotes = uncleanJson.replaceAll("^\"|\"$", "");
+        return StringEscapeUtils.unescapeJava(noQuotes);
+    }
+
+    public void put(UserTags tags, WritePolicy writePolicy) throws IOException {
         Key key = new Key(NAMESPACE, SET, String.valueOf(tags.getCookie()));
         Bin versionBin = new Bin(VERSION_BIN, schemaVersion.getCurrentSchemaVersion());
         Bin messageBin = new Bin(TAGS_BIN, serde.serialize(tags));
@@ -94,7 +130,7 @@ public class UserTagDao {
                 Record record = client.get(readPolicy, key, VERSION_BIN, TAGS_BIN);
                 UserTags userTags = (record == null) ?
                         new UserTags(cookie, new ArrayList<>(), new ArrayList<>()) :
-                        deserializeUserTags(record);
+                        GSON.fromJson(new String(Snappy.uncompress((byte []) record.getValue(TAGS_BIN)), StandardCharsets.UTF_8), UserTags.class);
                 List<UserTag> currTags = (action == Action.BUY) ? userTags.getBuys() : userTags.getViews();
 
                 currTags.add(tag);
@@ -121,6 +157,8 @@ public class UserTagDao {
                 } else {
                     throw e;
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
@@ -138,6 +176,7 @@ public class UserTagDao {
 
         return serde.deserialize((byte[]) record.getValue(TAGS_BIN), new Schema.Parser().parse(schema));
     }
+
 
 
     public UserTags get(String cookie) {

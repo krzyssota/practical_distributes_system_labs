@@ -1,6 +1,6 @@
 package ks406362.schema;
 
-import ks406362.generated.UserTags;
+import ks406362.UserTags;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.schema.registry.SchemaReference;

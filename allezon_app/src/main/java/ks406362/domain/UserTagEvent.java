@@ -6,7 +6,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ks406362.generated.UserTag;
+import ks406362.UserTag;
 
 
 //@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)

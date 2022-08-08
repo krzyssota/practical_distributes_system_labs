@@ -3,9 +3,8 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package ks406362.generated;
+package ks406362;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -194,8 +193,8 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * Creates a new ProductInfo RecordBuilder.
    * @return A new ProductInfo RecordBuilder
    */
-  public static ks406362.generated.ProductInfo.Builder newBuilder() {
-    return new ks406362.generated.ProductInfo.Builder();
+  public static ProductInfo.Builder newBuilder() {
+    return new ProductInfo.Builder();
   }
 
   /**
@@ -203,11 +202,11 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing builder to copy.
    * @return A new ProductInfo RecordBuilder
    */
-  public static ks406362.generated.ProductInfo.Builder newBuilder(ks406362.generated.ProductInfo.Builder other) {
+  public static ProductInfo.Builder newBuilder(ProductInfo.Builder other) {
     if (other == null) {
-      return new ks406362.generated.ProductInfo.Builder();
+      return new ProductInfo.Builder();
     } else {
-      return new ks406362.generated.ProductInfo.Builder(other);
+      return new ProductInfo.Builder(other);
     }
   }
 
@@ -216,11 +215,11 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
    * @param other The existing instance to copy.
    * @return A new ProductInfo RecordBuilder
    */
-  public static ks406362.generated.ProductInfo.Builder newBuilder(ks406362.generated.ProductInfo other) {
+  public static ProductInfo.Builder newBuilder(ProductInfo other) {
     if (other == null) {
-      return new ks406362.generated.ProductInfo.Builder();
+      return new ProductInfo.Builder();
     } else {
-      return new ks406362.generated.ProductInfo.Builder(other);
+      return new ProductInfo.Builder(other);
     }
   }
 
@@ -244,7 +243,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(ks406362.generated.ProductInfo.Builder other) {
+    private Builder(ProductInfo.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.product_id)) {
         this.product_id = data().deepCopy(fields()[0].schema(), other.product_id);
@@ -268,7 +267,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
      * Creates a Builder by copying an existing ProductInfo instance
      * @param other The existing instance to copy.
      */
-    private Builder(ks406362.generated.ProductInfo other) {
+    private Builder(ProductInfo other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.product_id)) {
         this.product_id = data().deepCopy(fields()[0].schema(), other.product_id);
@@ -302,7 +301,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'product_id'.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder setProductId(CharSequence value) {
+    public ProductInfo.Builder setProductId(CharSequence value) {
       validate(fields()[0], value);
       this.product_id = value;
       fieldSetFlags()[0] = true;
@@ -322,7 +321,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'product_id' field.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder clearProductId() {
+    public ProductInfo.Builder clearProductId() {
       product_id = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -342,7 +341,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'brand_id'.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder setBrandId(CharSequence value) {
+    public ProductInfo.Builder setBrandId(CharSequence value) {
       validate(fields()[1], value);
       this.brand_id = value;
       fieldSetFlags()[1] = true;
@@ -362,7 +361,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'brand_id' field.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder clearBrandId() {
+    public ProductInfo.Builder clearBrandId() {
       brand_id = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -382,7 +381,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'category_id'.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder setCategoryId(CharSequence value) {
+    public ProductInfo.Builder setCategoryId(CharSequence value) {
       validate(fields()[2], value);
       this.category_id = value;
       fieldSetFlags()[2] = true;
@@ -402,7 +401,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'category_id' field.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder clearCategoryId() {
+    public ProductInfo.Builder clearCategoryId() {
       category_id = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -422,7 +421,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'price'.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder setPrice(int value) {
+    public ProductInfo.Builder setPrice(int value) {
       validate(fields()[3], value);
       this.price = value;
       fieldSetFlags()[3] = true;
@@ -442,7 +441,7 @@ public class ProductInfo extends org.apache.avro.specific.SpecificRecordBase imp
       * Clears the value of the 'price' field.
       * @return This builder.
       */
-    public ks406362.generated.ProductInfo.Builder clearPrice() {
+    public ProductInfo.Builder clearPrice() {
       fieldSetFlags()[3] = false;
       return this;
     }

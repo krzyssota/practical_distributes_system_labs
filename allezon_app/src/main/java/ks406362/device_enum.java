@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package ks406362.generated;
+package ks406362;
 
 @org.apache.avro.specific.AvroGenerated
 public enum device_enum implements org.apache.avro.generic.GenericEnumSymbol<device_enum> {

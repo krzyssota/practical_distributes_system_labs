@@ -83,6 +83,17 @@
             <artifactId>spring-cloud-schema-registry-client</artifactId>
             <version>1.1.5</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial.snappy</groupId>
+            <artifactId>snappy-java</artifactId>
+            <version>1.1.8.4</version>
+        </dependency>
     </dependencies>
 
     <build>
