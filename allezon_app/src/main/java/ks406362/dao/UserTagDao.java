@@ -130,7 +130,7 @@ public class UserTagDao {
                 Record record = client.get(readPolicy, key, VERSION_BIN, TAGS_BIN);
                 UserTags userTags = (record == null) ?
                         new UserTags(cookie, new ArrayList<>(), new ArrayList<>()) :
-                        GSON.fromJson(new String(Snappy.uncompress((byte []) record.getValue(TAGS_BIN)), StandardCharsets.UTF_8), UserTags.class);
+                        deserializeUserTags(record);
                 List<UserTag> currTags = (action == Action.BUY) ? userTags.getBuys() : userTags.getViews();
 
                 currTags.add(tag);
